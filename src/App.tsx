@@ -1,5 +1,11 @@
+import { AppRoutes } from "./app/index";
+
 function App() {
-  return <h1>delivery - chlab 2222</h1>;
+    return (
+        <div className="app">
+            <AppRoutes />
+        </div>
+    );
 }
 
 export default App;
