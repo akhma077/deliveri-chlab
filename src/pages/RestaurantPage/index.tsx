@@ -53,6 +53,114 @@ export const RestaurantPage: React.FC = () => {
             weight: 199,
             description: "Лучшие суши на свете",
         },
+        {
+            id: 122367867,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 1223342112,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 1223324236,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 122312556,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 12233334,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 12233333333,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 122325555,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 12121313423,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 12232143,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 1223452135,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 1223222,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+        {
+            id: 12212341243,
+            name: "Суши 4",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
     ];
 
     const [basketData, setBasketData] = React.useState([]);
@@ -67,21 +175,29 @@ export const RestaurantPage: React.FC = () => {
     return (
         <div className={styles.page}>
             <div>
-                <RestarauntHeader />
-                <Categories />
-                <RestaurantContent
-                    data={data}
-                    resetCount={resetCount}
-                    setResetCount={setResetCount}
-                    basketData={basketData}
-                    setBasketData={setBasketData}
-                />
-                <div className={styles.basket}>
-                    <ProductBasket
+                <div className={styles.categories_plug}>
+                    <div className={styles.categories}>
+                        <Categories />
+                    </div>
+                </div>
+                <div className={styles.content}>
+                    <RestarauntHeader />
+                    <RestaurantContent
+                        data={data}
+                        resetCount={resetCount}
                         setResetCount={setResetCount}
                         basketData={basketData}
                         setBasketData={setBasketData}
                     />
+                </div>
+                <div className={styles.basket_plug}>
+                    <div className={styles.basket}>
+                        <ProductBasket
+                            setResetCount={setResetCount}
+                            basketData={basketData}
+                            setBasketData={setBasketData}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
