@@ -1,4 +1,7 @@
-declare module '*.scss';
+declare module '*.scss' {
+  const value: any;
+  export default value;
+}
 declare module '*.png';
 declare module '*.jpg';
 
