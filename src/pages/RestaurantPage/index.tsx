@@ -3,7 +3,8 @@ import styles from "./index.module.scss";
 
 import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
 import { RestaurantContent } from "../../features";
-import { ProductBasket } from "../../widgets";
+
+import { Categories, ProductBasket, RestarauntHeader } from "../../widgets";
 
 export const RestaurantPage: React.FC = () => {
     const data = [
@@ -66,6 +67,8 @@ export const RestaurantPage: React.FC = () => {
     return (
         <div className={styles.page}>
             <div>
+                <RestarauntHeader />
+                <Categories />
                 <RestaurantContent
                     data={data}
                     resetCount={resetCount}
