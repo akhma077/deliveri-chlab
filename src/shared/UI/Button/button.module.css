@@ -1,0 +1,124 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  font: var(--font-main-h4);
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.buttonIcon {
+  flex-shrink: 0;
+}
+
+.buttonPrimaryVariant {
+  background-color: var(--primary-500);
+  color: var(--white-900);
+}
+
+.buttonSecondaryVariant {
+  background-color: var(--primary-100);
+  color: var(--neutral-500);
+}
+
+.buttonClearVariant {
+  background-color: var(--white-900);
+  color: var(--neutral-400);
+}
+
+.buttonPrimaryVariant .buttonIcon path {
+  stroke: var(--white-900);
+}
+
+.buttonSecondaryVariant .buttonIcon path {
+  stroke: var(--neutral-500);
+}
+
+.buttonClearVariant .buttonIcon path {
+  stroke: var(--neutral-400);
+}
+
+.buttonLargeSize {
+  padding: 0 28px 0 24px;
+  height: 48px;
+}
+
+/* TODO: исправить padding у mediumSize, как только появится дизайн */
+.buttonMediumSize {
+  padding: 0 14px 0 12px;
+  height: 40px;
+}
+
+.buttonRounded {
+  border-radius: 8px;
+}
+
+/* TODO: радиус закругления, в зависимости от размера кнопки */
+/* .buttonLargeSize.buttonRounded {
+  border-radius: 8px;
+}
+
+.buttonMediumSize.buttonRounded {
+  border-radius: 4px;
+} */
+
+.buttonFullWidth {
+  width: 100% !important;
+}
+
+.buttonDisabled {
+  cursor: default;
+}
+
+.buttonDisabled.buttonPrimaryVariant {
+  background-color: var(--primary-200);
+}
+
+.buttonPrimaryVariant:hover:not(.buttonDisabled) {
+  background-color: var(--primary-300);
+}
+
+.buttonPrimaryVariant:active:not(.buttonDisabled) {
+  background-color: var(--primary-600);
+}
+
+.buttonDisabled.buttonSecondaryVariant {
+  background-color: var(--primary-100);
+  color: var(--primary-200);
+}
+
+.buttonDisabled.buttonSecondaryVariant .buttonIcon path {
+  stroke: var(--primary-200);
+}
+
+.buttonSecondaryVariant:hover:not(.buttonDisabled) {
+  background-color: var(--primary-200);
+  color: var(--primary-600);
+}
+
+.buttonSecondaryVariant:hover:not(.buttonDisabled) .buttonIcon path {
+  stroke: var(--primary-600);
+}
+
+.buttonSecondaryVariant:active:not(.buttonDisabled) {
+  background-color: var(--primary-600);
+  color: var(--white-900);
+}
+
+.buttonSecondaryVariant:active:not(.buttonDisabled) .buttonIcon path {
+  stroke: var(--white-900);
+}
+
+.buttonOnlyIcon {
+  padding: 0;
+}
+
+.buttonLargeSize.buttonOnlyIcon {
+  width: 48px;
+}
+
+.buttonMediumSize.buttonOnlyIcon {
+  width: 40px;
+}
