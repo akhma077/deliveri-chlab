@@ -1,0 +1,1 @@
+export { ModaleOne } from "./modalWindows";
