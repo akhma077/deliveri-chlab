@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.scss";
-import { RestarauntHeader } from "./../RestarauntHeader/index";
+import { RestarauntHeader } from "./../RestarauntHeader";
 import { RestaurantContent } from "../../features";
 import { Product } from "../../entities";
 
