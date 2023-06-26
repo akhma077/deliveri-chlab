@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./index.module.scss";
-import { BasketContent } from "../../features";
+import { BasketContent, MiniBasket } from "../../features";
 import { Product } from "../../entities";
 import { ModaleOne } from "../../shared";
 
@@ -28,45 +28,54 @@ export const ProductBasket: React.FC<Props> = ({
     };
 
     return (
-        <div className={styles.basket}>
-            {modalActive && (
-                <ModaleOne
-                    title={"Вы уверены?"}
-                    description="Вы  точно хотите очистить все?"
-                    clickNo={() => setModalActive(false)}
-                    clickYes={() => handleClickClearBasket()}
-                />
-            )}
-
-            <div className={styles.basket_head}>
-                <h2>Корзина</h2>
-                <button onClick={() => setModalActive(true)}>Очистить</button>
-            </div>
-            <div className={styles.basket_delivery}>
-                <div
-                    className={
-                        delivery === "delivery" ? styles.title_active : ""
-                    }
-                    onClick={() => setDelivery("delivery")}
-                >
-                    Доставка
-                </div>
-                <div className={styles.desk}>Выберите</div>
-                <div
-                    className={
-                        delivery === "takeaway" ? styles.title_active : ""
-                    }
-                    onClick={() => setDelivery("takeaway")}
-                >
-                    Навынос
-                </div>
-            </div>
-            {/* content */}
-            <BasketContent
+        <>
+            <MiniBasket
                 setResetCount={setResetCount}
                 data={basketData}
                 setData={setBasketData}
             />
-        </div>
+            <div className={styles.basket} style={{ display: "none" }}>
+                {modalActive && (
+                    <ModaleOne
+                        title={"Вы уверены?"}
+                        description="Вы  точно хотите очистить все?"
+                        clickNo={() => setModalActive(false)}
+                        clickYes={() => handleClickClearBasket()}
+                    />
+                )}
+
+                <div className={styles.basket_head}>
+                    <h2>Корзина</h2>
+                    <button onClick={() => setModalActive(true)}>
+                        Очистить
+                    </button>
+                </div>
+                <div className={styles.basket_delivery}>
+                    <div
+                        className={
+                            delivery === "delivery" ? styles.title_active : ""
+                        }
+                        onClick={() => setDelivery("delivery")}
+                    >
+                        Доставка
+                    </div>
+                    <div className={styles.desk}>Выберите</div>
+                    <div
+                        className={
+                            delivery === "takeaway" ? styles.title_active : ""
+                        }
+                        onClick={() => setDelivery("takeaway")}
+                    >
+                        Навынос
+                    </div>
+                </div>
+                {/* content */}
+                <BasketContent
+                    setResetCount={setResetCount}
+                    data={basketData}
+                    setData={setBasketData}
+                />
+            </div>
+        </>
     );
 };

@@ -10,6 +10,7 @@
         }
     }
     .categories {
+        width: 220px;
         position: fixed;
     }
     .categories_plug {
@@ -26,5 +27,21 @@
     .basket_plug {
         width: 300px;
         margin-inline-start: 30px;
+    }
+    @media (max-width: 1400px) {
+        .categories {
+            width: 180px;
+        }
+        .categories_plug {
+            width: 280px;
+        }
+    }
+    @media (max-width: 1300px) {
+        .categories {
+            width: 150px;
+        }
+        .categories_plug {
+            width: 250px;
+        }
     }
 }

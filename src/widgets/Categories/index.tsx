@@ -18,7 +18,6 @@ export const Categories: React.FC = () => {
     return (
         <div className={styles.categories}>
             <h2 className={styles.categories__title}>Меню</h2>
-
             <ul className={styles.categories__list}>
                 {categories.map((item, idx) => (
                     <li
