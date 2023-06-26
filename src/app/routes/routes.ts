@@ -6,4 +6,5 @@ interface RoutePaths {
 export const routePaths: RoutePaths = {
   home: '/',
   restaraunt: 'restaraunt/:id',
+
 };

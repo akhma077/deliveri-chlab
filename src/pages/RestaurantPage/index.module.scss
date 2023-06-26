@@ -4,6 +4,21 @@
   align-items: center;
   > div {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    > div {
+        display: flex;
+        justify-content: space-between;
+        > .basket {
+            margin-inline-start: 30px;
+        }
+    }
+    .categories {
+        width: 220px;
+        position: fixed;
+    }
+    .categories_plug {
+        width: 320px;
     justify-content: space-between;
     > .basket {
       margin-inline-start: 30px;
@@ -16,15 +31,31 @@
     width: 320px;
   }
 
-  .content {
-    width: 900px;
-  }
-  .basket {
-    margin-top: 20px;
-    position: fixed;
-  }
-  .basket_plug {
-    width: 300px;
-    margin-inline-start: 30px;
-  }
+    .content {
+        width: 900px;
+    }
+    .basket {
+        margin-top: 20px;
+        position: fixed;
+    }
+    .basket_plug {
+        width: 300px;
+        margin-inline-start: 30px;
+    }
+    @media (max-width: 1400px) {
+        .categories {
+            width: 180px;
+        }
+        .categories_plug {
+            width: 280px;
+        }
+    }
+    @media (max-width: 1300px) {
+        .categories {
+            width: 150px;
+        }
+        .categories_plug {
+            width: 250px;
+        }
+    }
 }

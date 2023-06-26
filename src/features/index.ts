@@ -1,2 +1,2 @@
 export { RestaurantContent } from "./restaurantContent";
-export { BasketContent } from "./productBasket";
+export { BasketContent, MiniBasket } from "./productBasket";

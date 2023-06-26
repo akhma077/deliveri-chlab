@@ -1,11 +1,16 @@
 import * as React from 'react';
 import styles from './index.module.scss';
 
-import testImage from '../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg';
-import { RestaurantContent } from '../../features';
+import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
 
-import { Categories, ProductBasket, RestarauntHeader } from '../../widgets';
-import { Header } from '../../widgets/Header';
+import {
+    Categories,
+    ProductBasket,
+    RestarauntContent,
+    RestarauntHeader,
+} from "../../widgets";
+
+
 
 export const RestaurantPage: React.FC = () => {
   const data = [
@@ -171,34 +176,30 @@ export const RestaurantPage: React.FC = () => {
     data.map((elem) => setResetCount((prev: any) => ({ ...prev, [elem.id]: false })));
   }, []);
 
-  return (
-    <div className={styles.page}>
-      <div>
-        <div className={styles.categories_plug}>
-          <div className={styles.categories}>
-            <Categories />
-          </div>
-        </div>
-        <div className={styles.content}>
-          <RestarauntHeader />
-          <RestaurantContent
-            data={data}
-            resetCount={resetCount}
-            setResetCount={setResetCount}
-            basketData={basketData}
-            setBasketData={setBasketData}
-          />
-        </div>
-        <div className={styles.basket_plug}>
-          <div className={styles.basket}>
-            <ProductBasket
-              setResetCount={setResetCount}
-              basketData={basketData}
-              setBasketData={setBasketData}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.page}>
+            <div>
+                <div className={styles.categories_plug}>
+                    <div className={styles.categories}>
+                        <Categories />
+                    </div>
+                </div>
+                <RestarauntContent
+                    data={data}
+                    resetCount={resetCount}
+                    setResetCount={setResetCount}
+                    basketData={basketData}
+                    setBasketData={setBasketData}
+                />
+                <div className={styles.basket_plug}>
+                    <div className={styles.basket}>
+                        <ProductBasket
+                            setResetCount={setResetCount}
+                            basketData={basketData}
+                            setBasketData={setBasketData}
+                        />
+                    </div>
+                </div>
+            </div>
+
 };

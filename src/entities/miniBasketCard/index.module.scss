@@ -1,0 +1,16 @@
+.mini_card {
+    position: relative;
+    margin-top: 4px;
+    img {
+        width: 60px;
+        height: 40px;
+        border-radius: 10px;
+    }
+    div {
+        position: absolute;
+        z-index: 1;
+        color: white;
+        right: 2px;
+        bottom: 0px;
+    }
+}
