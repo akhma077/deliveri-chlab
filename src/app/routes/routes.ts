@@ -1,9 +1,10 @@
 interface RoutePaths {
-    home: string;
-    restaraunt: string;
+  home: string;
+  restaraunt: string;
 }
 
 export const routePaths: RoutePaths = {
-    home: "/",
-    restaraunt: "/restaurant",
+  home: '/',
+  restaraunt: 'restaraunt/:id',
+
 };
