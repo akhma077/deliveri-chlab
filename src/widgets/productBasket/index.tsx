@@ -1,6 +1,11 @@
 import * as React from "react";
 import styles from "./index.module.scss";
-import { BasketContent } from "../../features";
+import {
+    BasketContent,
+    BasketHead,
+    BasketModal,
+    BasketSumm,
+} from "../../features";
 import { Product } from "../../entities";
 import { ModaleOne } from "../../shared";
 
@@ -16,6 +21,10 @@ export const ProductBasket: React.FC<Props> = ({
     setBasketData,
 }) => {
     const [modalActive, setModalActive] = React.useState<boolean>(false);
+    const [basketModal, setBasketModal] = React.useState<boolean>(true);
+    const [basketSumm, setBasketSumm] = React.useState<number>(0);
+    const [basketCount, setBasketCount] = React.useState<number>(0);
+
     const [delivery, setDelivery] = React.useState<string>("delivery");
     const handleClickClearBasket = () => {
         setBasketData([]);
@@ -27,46 +36,63 @@ export const ProductBasket: React.FC<Props> = ({
         setModalActive(false);
     };
 
+    const handleClickMiniBasket = () => {
+        console.log("mini basket");
+    };
+
+    React.useEffect(() => {
+        let summ = 0;
+        let count = 0;
+        if (basketData.length > 0) {
+            basketData.map((arrs: Product[]) => {
+                arrs.map((elem) => (summ += elem.price));
+                count += arrs.length;
+                setBasketSumm(summ);
+                setBasketCount(count);
+            });
+        } else {
+            setBasketSumm(0);
+            setBasketCount(0);
+        }
+    }, [basketData]);
+
     return (
-        <div className={styles.basket}>
-            {modalActive && (
-                <ModaleOne
-                    title={"Вы уверены?"}
-                    description="Вы  точно хотите очистить все?"
-                    clickNo={() => setModalActive(false)}
-                    clickYes={() => handleClickClearBasket()}
+        <>
+            {false && (
+                <BasketModal
+                    closeModal={() => setBasketModal(false)}
+                    delivery={delivery}
+                    setDelivery={setDelivery}
+                    setModalActive={setModalActive}
+                    setResetCount={setResetCount}
+                    data={basketData}
+                    setData={setBasketData}
                 />
             )}
 
-            <div className={styles.basket_head}>
-                <h2>Корзина</h2>
-                <button onClick={() => setModalActive(true)}>Очистить</button>
+            <div className={styles.basket}>
+                {modalActive && (
+                    <ModaleOne
+                        title={"Вы уверены?"}
+                        description="Вы  точно хотите очистить все?"
+                        clickNo={() => setModalActive(false)}
+                        clickYes={() => handleClickClearBasket()}
+                    />
+                )}
+                <BasketHead
+                    delivery={delivery}
+                    setDelivery={setDelivery}
+                    setModalActive={setModalActive}
+                />
+
+                <BasketContent
+                    setResetCount={setResetCount}
+                    data={basketData}
+                    setData={setBasketData}
+                />
+
+                <BasketSumm summ={basketSumm} count={basketCount} />
             </div>
-            <div className={styles.basket_delivery}>
-                <div
-                    className={
-                        delivery === "delivery" ? styles.title_active : ""
-                    }
-                    onClick={() => setDelivery("delivery")}
-                >
-                    Доставка
-                </div>
-                <div className={styles.desk}>Выберите</div>
-                <div
-                    className={
-                        delivery === "takeaway" ? styles.title_active : ""
-                    }
-                    onClick={() => setDelivery("takeaway")}
-                >
-                    Навынос
-                </div>
-            </div>
-            {/* content */}
-            <BasketContent
-                setResetCount={setResetCount}
-                data={basketData}
-                setData={setBasketData}
-            />
-        </div>
+        </>
     );
 };

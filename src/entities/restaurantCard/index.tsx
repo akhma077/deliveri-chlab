@@ -54,7 +54,7 @@ export const RestaurantCard: React.FC<Props> = ({
         <div className={styles.card}>
             <img src={product.image} alt={product.name} />
             <div>
-                <div className={styles.card_price}>{product.price}</div>
+                <div className={styles.card_price}>{product.price}₽</div>
                 <div className={styles.card_name}>{product.name}</div>
                 <div className={styles.card_weight}>{product.weight}</div>
             </div>

@@ -2,7 +2,19 @@ import * as React from "react";
 import styles from "./index.module.scss";
 import iconClose from "../../../assets/img/iconClose.svg";
 
-export const ModaleOne = ({ title, description, clickNo, clickYes }) => {
+interface Props {
+    title: string;
+    description: string;
+    clickNo: () => void;
+    clickYes: () => void;
+}
+
+export const ModaleOne: React.FC<Props> = ({
+    title,
+    description,
+    clickNo,
+    clickYes,
+}) => {
     return (
         <div className={styles.modal}>
             <div>
