@@ -6,9 +6,11 @@ import { RestarauntBlock } from '../../widgets';
 export const Restaurant: React.FC = () => {
   return (
     <main className={styles.main}>
-      <h2 className={styles.main__title}>Все рестораны </h2>
+      <h2 className={styles.main__title}>Pестораны </h2>
 
-      <RestarauntBlock />
+      <div className={styles.main__block}>
+        <RestarauntBlock />
+      </div>
     </main>
   );
 };
