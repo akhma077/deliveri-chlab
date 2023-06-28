@@ -1,48 +1,11 @@
 .basket {
     width: 100%;
-    > .basket_head {
-        display: flex;
-        justify-content: space-between;
-        > h2 {
-            font-weight: 700;
-            font-size: 24px;
-        }
-        > button {
-            color: #9e9b98;
-            border: none;
-            background: none;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        > button:hover {
-            color: black;
-        }
-    }
-
-    > .basket_delivery {
-        margin-top: 14px;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 24px;
-        > div {
-            text-align: center;
-            color: #9e9b98;
-            font-size: 19px;
-            cursor: pointer;
-        }
-        > .desk {
-            margin-top: 24px;
-            font-size: 14px;
-        }
-    }
-    .title_active {
-        color: black !important;
-        transition: 0.4s;
+    height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 1300px) {
+    .basket {
+        display: none;
     }
 }
-// @media (max-width: 1600px) {
-//     .basket {
-//         width: 300px;
-//     }
-// }
