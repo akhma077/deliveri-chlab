@@ -23,6 +23,15 @@ export const RestarauntContent: React.FC<Props> = ({
         <div className={styles.content}>
             <RestarauntHeader />
             <RestaurantContent
+                title="Суши"
+                data={data}
+                resetCount={resetCount}
+                setResetCount={setResetCount}
+                basketData={basketData}
+                setBasketData={setBasketData}
+            />
+            <RestaurantContent
+                title="Негры"
                 data={data}
                 resetCount={resetCount}
                 setResetCount={setResetCount}

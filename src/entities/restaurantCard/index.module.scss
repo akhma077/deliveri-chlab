@@ -3,11 +3,12 @@
     display: flex;
     padding: 12px;
     position: relative;
-    background: #ffffff;
+    background: #e1e1e1;
     transition: 0.2s ease box-shadow;
     border-radius: 24px;
     flex-direction: column;
     margin-top: 10px;
+    margin-bottom: 10px;
 
     > img {
         width: 100%;
@@ -36,7 +37,7 @@
         height: 40px;
         border-radius: 25px;
         font-size: 16px;
-        background-color: #00ff3a;
+        background-color: white;
         border: none;
         animation: anWidth 0.3s;
         overflow: hidden;

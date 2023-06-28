@@ -1,23 +1,23 @@
 * {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  outline: none;
-  font-family: 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    outline: none;
+    font-family: "Proxima Nova", Roboto, system-ui, Tahoma, sans-serif;
+    box-sizing: border-box;
 }
 
 html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  color: $black;
-  background: #f3f3f3;
-  padding-top: 110px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: $black;
+    background: #f3f3f3;
+    padding-top: 110px;
 }
 
 a,
@@ -32,17 +32,17 @@ h5,
 h1,
 h2,
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 /* Reset form elements */
 button,
 input,
 select,
 textarea {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
 }
 
 /* Reset typographic styles */
@@ -100,29 +100,29 @@ thead,
 tr,
 th,
 td {
-  font-size: 100%;
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: none;
-  list-style: none;
-  vertical-align: baseline;
-  text-align: left;
+    font-size: 100%;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    list-style: none;
+    vertical-align: baseline;
+    text-align: left;
 }
 
 /* Reset images */
 img {
-  border: 0;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
+    border: 0;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
 }
 
 @mixin noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }

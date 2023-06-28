@@ -1,2 +1,4 @@
+export { BasketHead } from "./basketHead";
 export { BasketContent } from "./basketContent";
-export { MiniBasket } from "./miniBasket";
+export { BasketSumm } from "./basketSumm";
+export { BasketModal } from "./basketModal";
