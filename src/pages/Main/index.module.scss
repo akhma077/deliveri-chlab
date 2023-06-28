@@ -1,6 +1,23 @@
 .main {
   margin: 40px 120px;
 
+  @media (max-width: 576px) {
+    margin: 40px 0;
+
+    &__block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__title {
+      margin-bottom: 50px;
+      margin-left: 24px;
+
+      display: none;
+    }
+  }
+
   &__title {
     font-size: 26px;
     font-weight: 700;

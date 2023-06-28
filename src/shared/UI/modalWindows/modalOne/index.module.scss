@@ -1,57 +1,57 @@
 .modal {
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba($color: black, $alpha: 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    > div {
-        padding: 30px 15px;
-        width: 360px;
-        background-color: white;
-        border-radius: 30px;
-        > .head {
-            display: flex;
-            justify-content: space-between;
-            align-content: center;
-            > div {
-                font-size: 30px;
-                font-weight: 600;
-            }
-            > img {
-                cursor: pointer;
-                width: 26px;
-                height: 26px;
-            }
-        }
-        > .content {
-            margin-top: 34px;
-            font-size: 20px;
-        }
-        > .buttons {
-            width: 95%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            > button {
-                cursor: pointer;
-                width: 47%;
-                height: 40px;
-                border-radius: 10px;
-                border: none;
-                color: white;
-                font-size: 16px;
-            }
-            > button:first-child {
-                background: #ff2e2e;
-            }
-            > button:last-child {
-                background: #49b562;
-            }
-        }
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: black, $alpha: 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > div {
+    padding: 30px 15px;
+    width: 360px;
+    background-color: white;
+    border-radius: 30px;
+    > .head {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      > div {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      > img {
+        cursor: pointer;
+        width: 26px;
+        height: 26px;
+      }
     }
+    > .content {
+      margin-top: 34px;
+      font-size: 20px;
+    }
+    > .buttons {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      > button {
+        cursor: pointer;
+        width: 47%;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 16px;
+      }
+      > button:first-child {
+        background: #ff2e2e;
+      }
+      > button:last-child {
+        background: #49b562;
+      }
+    }
+  }
 }
