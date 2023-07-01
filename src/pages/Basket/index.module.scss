@@ -6,4 +6,118 @@
         width: 800px;
         height: 1000px;
     }
+    .top_ele {
+        width: 800px;
+        height: 80px;
+        position: fixed;
+        top: calc(100vh - 80px);
+        border: 1px solid #bebebe;
+        border-radius: 25px 25px 0 0;
+
+        padding: 0 20px;
+        background-image: url(https://pazlyigra.ru/uploads/posts/2023-01/2020food___cakes_and_sweet_cookies_and_strawberries_on_the_table_149490_.jpg);
+        color: white;
+        background-size: cover;
+
+        .icon_btn {
+            cursor: pointer;
+            position: absolute;
+            top: -30px;
+            transition: 0.4s;
+            width: 100%;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            > img {
+                width: 40px;
+            }
+        }
+        .icon_btn_active {
+            transform: rotate(180deg);
+        }
+        .head {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            div {
+                width: 150px;
+            }
+            .summ {
+                border-radius: 50px;
+                border: 1px solid #bebebe;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(6px);
+            }
+            .count {
+                text-align: center;
+            }
+            button {
+                cursor: pointer;
+                color: white;
+                width: 150px;
+                height: 35px;
+                border-radius: 50px;
+                border: 1px solid #bebebe;
+                background-color: transparent;
+                transition: 0.2s;
+                backdrop-filter: blur(6px);
+            }
+            button:hover {
+                background-color: rgba($color: #bebebe, $alpha: 0.2);
+            }
+        }
+        .content {
+            height: 400px;
+            width: 100%;
+            border: 1px solid white;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            animation: opsOff 1s;
+            backdrop-filter: blur(4px);
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        .content_active {
+            display: block;
+            animation: opsOn 1s;
+        }
+
+        transition: 1s;
+    }
+    .basket_active {
+        height: 500px;
+        top: calc(100vh - 500px);
+    }
+}
+@media (max-width: 900px) {
+    .root {
+        padding: 0 40px;
+        .top_ele {
+            width: 90vw;
+            left: 5%;
+        }
+    }
+}
+@keyframes opsOn {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 400px;
+    }
+}
+@keyframes opsOff {
+    0% {
+        height: 400px;
+    }
+    100% {
+        height: 0px;
+        display: none;
+    }
 }
