@@ -6,7 +6,8 @@ interface Props {
     data: any;
     setData: any;
     setResetCount: (arg: any) => void;
-    fullCard: boolean;
+    fullCard?: boolean;
+    onlyScroll?: boolean;
 }
 
 export const BasketContent: React.FC<Props> = ({
@@ -14,6 +15,7 @@ export const BasketContent: React.FC<Props> = ({
     setData,
     setResetCount,
     fullCard,
+    onlyScroll,
 }) => {
     // Добавление продуктов в коризну
     const handleClickAdd = (item: Product, idx: number) => {
@@ -54,7 +56,10 @@ export const BasketContent: React.FC<Props> = ({
     };
 
     return (
-        <div className={styles.content}>
+        <div
+            className={styles.content}
+            style={{ overflowY: onlyScroll ? "auto" : "initial" }}
+        >
             {data.map((products: Product[], index: number) => {
                 return products[0] ? (
                     <BasketCard

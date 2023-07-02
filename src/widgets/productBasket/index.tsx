@@ -87,6 +87,7 @@ export const ProductBasket: React.FC<Props> = ({
                     setResetCount={setResetCount}
                     data={basketData}
                     setData={setBasketData}
+                    onlyScroll
                 />
                 <BasketSumm summ={basketSumm} count={basketCount} />
             </div>

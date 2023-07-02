@@ -4,6 +4,7 @@ import { BasketContent, BasketHead } from "../../features";
 import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
 import iconArrowTop from "../../shared/assets/img/iconArrowTop.svg";
 import { Product } from "../../entities";
+import { useNavigate } from "react-router-dom";
 
 export const Basket = () => {
     const [modal, setModal] = React.useState<boolean>(false);
@@ -374,9 +375,12 @@ export const Basket = () => {
             },
         ],
     ]);
-
+    const navigate = useNavigate();
     const [basketSumm, setBasketSumm] = React.useState<number>(0);
     const [basketCount, setBasketCount] = React.useState<number>(0);
+    const [basketCountTitle, setBasketCountTitle] =
+        React.useState<string>("Количество");
+
     const [resetCount, setResetCount] = React.useState({});
 
     React.useEffect(() => {
@@ -412,15 +416,40 @@ export const Basket = () => {
         () => clearTimeout(timesOut);
     };
 
+    const screenWidth = window.screen.width;
+    React.useEffect(() => {
+        if (screenWidth < 500) setBasketCountTitle("Кол");
+    }, [screenWidth]);
+
     return (
         <div className={styles.root}>
             <div>
+                <button
+                    onClick={() => navigate(-1)}
+                    className={styles.categories__btn}
+                >
+                    <svg
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="m7.8 11 5.246-5.246a.5.5 0 0 0 0-.708l-.692-.692a.5.5 0 0 0-.708 0L4 12l7.646 7.646a.5.5 0 0 0 .708 0l.692-.692a.5.5 0 0 0 0-.708L7.8 13h11.7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H7.8Z"
+                            fill="currentColor"
+                        ></path>
+                    </svg>
+                </button>
                 <BasketHead setModalActive={setModal} />
                 <BasketContent
                     setResetCount={setResetCount}
                     data={basketData}
                     setData={setBasketData}
                     fullCard
+                    onlyScroll
                 />
                 <div
                     className={
@@ -469,7 +498,7 @@ export const Basket = () => {
                     <div className={styles.head}>
                         <div className={styles.summ}>Сумма: {basketSumm}₽</div>
                         <div className={styles.count}>
-                            Количество: {basketCount}
+                            {basketCountTitle}: {basketCount}
                         </div>
                         <button onClick={handleClickPayment}>Оплатить</button>
                     </div>
