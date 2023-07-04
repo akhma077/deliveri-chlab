@@ -2,9 +2,10 @@ import * as React from "react";
 import styles from "./index.module.scss";
 import { BasketContent, BasketHead } from "../../features";
 import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
-import iconArrowTop from "../../shared/assets/img/iconArrowTop.svg";
 import { Product } from "../../entities";
 import { useNavigate } from "react-router-dom";
+import { FooterBasket } from "../../widgets";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 export const Basket = () => {
     const [modal, setModal] = React.useState<boolean>(false);
@@ -375,11 +376,10 @@ export const Basket = () => {
             },
         ],
     ]);
+
     const navigate = useNavigate();
     const [basketSumm, setBasketSumm] = React.useState<number>(0);
     const [basketCount, setBasketCount] = React.useState<number>(0);
-    const [basketCountTitle, setBasketCountTitle] =
-        React.useState<string>("Количество");
 
     const [resetCount, setResetCount] = React.useState({});
 
@@ -415,11 +415,14 @@ export const Basket = () => {
         setBasketOn((prev) => !prev);
         () => clearTimeout(timesOut);
     };
-
-    const screenWidth = window.screen.width;
-    React.useEffect(() => {
-        if (screenWidth < 500) setBasketCountTitle("Кол");
-    }, [screenWidth]);
+    const ref = useDetectClickOutside({
+        onTriggered: () => {
+            setBasketOn(false);
+            setTimeout(() => {
+                setContentOn(false);
+            }, 1000);
+        },
+    });
 
     return (
         <div className={styles.root}>
@@ -449,60 +452,16 @@ export const Basket = () => {
                     data={basketData}
                     setData={setBasketData}
                     fullCard
-                    onlyScroll
                 />
-                <div
-                    className={
-                        styles.top_ele +
-                        " " +
-                        (basketOn ? styles.basket_active : "")
-                    }
-                >
-                    <div
-                        className={
-                            styles.icon_btn +
-                            " " +
-                            (basketOn ? styles.icon_btn_active : "")
-                        }
-                    >
-                        <img
-                            onClick={handleClickPayment}
-                            src={iconArrowTop}
-                            alt=""
-                        />
-                    </div>
-
-                    <div
-                        className={
-                            styles.content +
-                            " " +
-                            (basketOn ? styles.content_active : "")
-                        }
-                        style={{ display: contentOn ? "block" : "none" }}
-                    >
-                        How to blur background image using CSS ? - GeeksforGeeks
-                        geeksforgeeks.org›how…blur-background-image…css/ Меню
-                        CSS allows for easy customization of a web page’s color,
-                        font, spacing, and other elements to make it a crucial
-                        tool for creating professional-looking and functional
-                        websites. To blur a background image using CSS, you can
-                        use the filter property. Читать ещёCSS allows for easy
-                        customization of a web page’s color, font, spacing, and
-                        other elements to make it a crucial tool for creating
-                        professional-looking and functional websites. To blur a
-                        background image using CSS, you can use the filter
-                        property. The filter property is used to set the visual
-                        effect of an element. Syntax Скрыть Не найдено: размытый
-                    </div>
-
-                    <div className={styles.head}>
-                        <div className={styles.summ}>Сумма: {basketSumm}₽</div>
-                        <div className={styles.count}>
-                            {basketCountTitle}: {basketCount}
-                        </div>
-                        <button onClick={handleClickPayment}>Оплатить</button>
-                    </div>
-                </div>
+                <FooterBasket
+                    basketActive={basketOn}
+                    basketRef={ref}
+                    contentActive={contentOn}
+                    handleClickPayment={handleClickPayment}
+                    basketCount={basketCount}
+                    basketSumm={basketSumm}
+                />
+                <div style={{ height: 100 }}></div>
             </div>
         </div>
     );
