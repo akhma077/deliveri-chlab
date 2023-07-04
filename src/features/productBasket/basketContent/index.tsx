@@ -57,8 +57,9 @@ export const BasketContent: React.FC<Props> = ({
 
     return (
         <div
-            className={styles.content}
-            style={{ overflowY: onlyScroll ? "auto" : "initial" }}
+            className={
+                styles.content + " " + (onlyScroll ? styles.content_scroll : "")
+            }
         >
             {data.map((products: Product[], index: number) => {
                 return products[0] ? (

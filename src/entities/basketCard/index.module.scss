@@ -4,6 +4,8 @@
     justify-content: space-between;
     animation: anCard 0.3s;
     margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e1e1e1;
     .cont {
         width: 100%;
         display: flex;
@@ -58,6 +60,7 @@
     }
     .icon_basket_delete {
         cursor: pointer;
+        margin-inline-end: 12px;
     }
 }
 
