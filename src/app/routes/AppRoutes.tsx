@@ -2,8 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import { routePaths } from './routes';
 import { Restaurant, RestaurantPage } from '../../pages';
 import { MainLayout } from '../layout';
+import { useResetScroll } from '../../shared/hooks/useResetScroll';
 
 export const AppRoutes = () => {
+  useResetScroll();
   return (
     <Routes>
       <Route path={routePaths.home} element={<MainLayout />}>
