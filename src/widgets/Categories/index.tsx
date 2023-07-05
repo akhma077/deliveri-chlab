@@ -10,6 +10,7 @@ export const Categories: React.FC = () => {
     setActiveIdx(idx);
   };
 
+  // const categoryRef = React.useRef(null);
 
   const navigate = useNavigate();
 
@@ -47,5 +48,4 @@ export const Categories: React.FC = () => {
       </ul>
     </div>
   );
-
 };

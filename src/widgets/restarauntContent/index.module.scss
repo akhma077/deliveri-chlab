@@ -1,8 +1,41 @@
 .content {
-    width: 900px;
+  width: 900px;
+
+  &__categories {
+    display: none;
+
+    @media (max-width: 1024px) {
+      display: block;
+    }
+  }
 }
 @media (max-width: 1600px) {
-    .content {
-        width: 740px;
-    }
+  .content {
+    width: 740px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .content {
+    width: 580px;
+  }
+}
+@media (max-width: 576px) {
+  .content {
+    width: 100vw;
+  }
+
+  .restaurantContent {
+    // background: red;
+
+    background: white;
+
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+    margin-top: -20px;
+    position: absolute;
+
+    width: 100vw;
+  }
 }
