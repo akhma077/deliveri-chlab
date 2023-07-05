@@ -6,12 +6,16 @@ interface Props {
     data: any;
     setData: any;
     setResetCount: (arg: any) => void;
+    fullCard?: boolean;
+    onlyScroll?: boolean;
 }
 
 export const BasketContent: React.FC<Props> = ({
     data,
     setData,
     setResetCount,
+    fullCard,
+    onlyScroll,
 }) => {
     // Добавление продуктов в коризну
     const handleClickAdd = (item: Product, idx: number) => {
@@ -37,16 +41,37 @@ export const BasketContent: React.FC<Props> = ({
         }
     };
 
+    const handleClickDeleteArray = (item: Product, idx: number) => {
+        setData((prev: any) => {
+            return [
+                ...prev.filter((elem: any, index: number) => index !== idx),
+            ];
+        });
+    };
+
+    const funcSumm = (arrs: Product[]) => {
+        let summ = 0;
+        arrs.map((item) => (summ += item.price));
+        return summ;
+    };
+
     return (
-        <div className={styles.content}>
+        <div
+            className={
+                styles.content + " " + (onlyScroll ? styles.content_scroll : "")
+            }
+        >
             {data.map((products: Product[], index: number) => {
                 return products[0] ? (
                     <BasketCard
+                        summ={funcSumm(products)}
+                        fullCard={fullCard}
                         product={products[0]}
                         count={products.length}
                         index={index}
                         addProduct={handleClickAdd}
                         deleteProduct={handleClickDelete}
+                        deleteProductArray={handleClickDeleteArray}
                         key={index}
                     />
                 ) : (

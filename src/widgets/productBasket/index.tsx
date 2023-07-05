@@ -40,6 +40,8 @@ export const ProductBasket: React.FC<Props> = ({
         console.log("mini basket");
     };
 
+    console.log(basketData);
+
     React.useEffect(() => {
         let summ = 0;
         let count = 0;
@@ -79,18 +81,14 @@ export const ProductBasket: React.FC<Props> = ({
                         clickYes={() => handleClickClearBasket()}
                     />
                 )}
-                <BasketHead
-                    delivery={delivery}
-                    setDelivery={setDelivery}
-                    setModalActive={setModalActive}
-                />
+                <BasketHead setModalActive={setModalActive} />
 
                 <BasketContent
                     setResetCount={setResetCount}
                     data={basketData}
                     setData={setBasketData}
+                    onlyScroll
                 />
-
                 <BasketSumm summ={basketSumm} count={basketCount} />
             </div>
         </>
