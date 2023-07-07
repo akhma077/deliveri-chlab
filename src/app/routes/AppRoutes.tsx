@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 import { routePaths } from "./routes";
 import { Basket, Restaurant, RestaurantPage } from "../../pages";
@@ -18,4 +19,4 @@ export const AppRoutes = () => {
             </Route>
         </Routes>
     );
-};
+
