@@ -160,7 +160,7 @@ export const Basket = () => {
         [
             {
                 id: 1224236,
-                name: "Суши 4",
+                name: "Суши",
                 image: testImage,
                 price: 300,
                 discount: 1,

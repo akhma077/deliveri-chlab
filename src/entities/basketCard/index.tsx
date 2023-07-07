@@ -29,35 +29,54 @@ export const BasketCard: React.FC<Props> = ({
 }) => {
     return (
         <div className={styles.card}>
-            <div className={styles.cont}>
-                <img src={product.image} alt={product.name} />
-                <div className={styles.content}>
-                    <div className={styles.content_name}>{product.name}</div>
-                    <div className={styles.content_price}>{product.price}₽</div>
+            <div className={styles.sup_cont}>
+                <div className={styles.cont}>
+                    <img src={product.image} alt={product.name} />
+                    <div className={styles.content}>
+                        <div className={styles.content_name}>
+                            {product.name}
+                        </div>
+                        <div className={styles.content_price}>
+                            {product.price}₽
+                        </div>
+                    </div>
+                    <div className={styles.counter}>
+                        <img
+                            src={iconDelete}
+                            alt="iconDelete"
+                            onClick={() => deleteProduct(product, index)}
+                        />
+                        <div>{count}</div>
+                        <img
+                            src={iconAdd}
+                            alt="iconAdd"
+                            onClick={() => addProduct(product, index)}
+                        />
+                    </div>
                 </div>
-                <div className={styles.counter}>
+                {fullCard && <div className={styles.summ}>{summ}₽</div>}
+                {fullCard && (
                     <img
-                        src={iconDelete}
-                        alt="iconDelete"
-                        onClick={() => deleteProduct(product, index)}
+                        className={styles.icon_basket_delete}
+                        src={iconBasketDelete}
+                        alt="iconBasketDelete"
+                        onClick={() => deleteProductArray(product, index)}
                     />
-                    <div>{count}</div>
-                    <img
-                        src={iconAdd}
-                        alt="iconAdd"
-                        onClick={() => addProduct(product, index)}
-                    />
-                </div>
+                )}
             </div>
-            {fullCard && <div className={styles.summ}>{summ}₽</div>}
-            {fullCard && (
+            {/* <div className={styles.sub_content}>
                 <img
-                    className={styles.icon_basket_delete}
-                    src={iconBasketDelete}
-                    alt="iconBasketDelete"
-                    onClick={() => deleteProductArray(product, index)}
+                    src={iconDelete}
+                    alt="iconDelete"
+                    onClick={() => deleteProduct(product, index)}
                 />
-            )}
+                <div>{count}</div>
+                <img
+                    src={iconAdd}
+                    alt="iconAdd"
+                    onClick={() => addProduct(product, index)}
+                />
+            </div> */}
         </div>
     );
 };
