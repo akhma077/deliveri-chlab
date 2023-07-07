@@ -88,3 +88,16 @@
     }
   }
 }
+.basketSum {
+  position: fixed;
+  bottom: 20px;
+  left: 75%;
+
+  z-index: 999;
+
+  display: none !important;
+
+  @media (max-width: 1200px) {
+    display: block !important;
+  }
+}
