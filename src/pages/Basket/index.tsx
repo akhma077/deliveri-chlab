@@ -156,226 +156,227 @@ export const Basket = () => {
     },
   ];
 
-  const [basketData, setBasketData] = React.useState([
-    [
-      {
-        id: 1224236,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-      {
-        id: 122423226,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-    [
-      {
-        id: 12,
-        name: 'Суши 4',
-        image: testImage,
-        price: 300,
-        discount: 1,
-        weight: 199,
-        description: 'Лучшие суши на свете',
-      },
-    ],
-  ]);
+
+    const [basketData, setBasketData] = React.useState([
+        [
+            {
+                id: 1224236,
+                name: "Суши",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+            {
+                id: 122423226,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+        [
+            {
+                id: 12,
+                name: "Суши 4",
+                image: testImage,
+                price: 300,
+                discount: 1,
+                weight: 199,
+                description: "Лучшие суши на свете",
+            },
+        ],
+    ]);
 
   const navigate = useNavigate();
   const [basketSumm, setBasketSumm] = React.useState<number>(0);
