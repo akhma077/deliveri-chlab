@@ -7,14 +7,11 @@ import iconDelete from "../../shared/assets/img/iconDelete.svg";
 import iconBasketDelete from "../../shared/assets/img/iconBasketDelete.svg";
 
 interface Props {
-    fullCard: boolean;
+    fullCard?: boolean;
     product: Product;
     count: number;
     addProduct: (item: Product, idx: number) => void;
     deleteProduct: (item: Product, idx: number) => void;
-    deleteProductArray: (item: Product, idx: number) => void;
-    index: number;
-    summ?: number;
 }
 
 export const BasketCard: React.FC<Props> = ({
@@ -23,9 +20,6 @@ export const BasketCard: React.FC<Props> = ({
     count,
     addProduct,
     deleteProduct,
-    deleteProductArray,
-    index,
-    summ,
 }) => {
     return (
         <div className={styles.card}>
@@ -44,39 +38,26 @@ export const BasketCard: React.FC<Props> = ({
                         <img
                             src={iconDelete}
                             alt="iconDelete"
-                            onClick={() => deleteProduct(product, index)}
+                            onClick={() => deleteProduct(product, count)}
                         />
                         <div>{count}</div>
                         <img
                             src={iconAdd}
                             alt="iconAdd"
-                            onClick={() => addProduct(product, index)}
+                            onClick={() => addProduct(product, 1)}
                         />
                     </div>
                 </div>
-                {fullCard && <div className={styles.summ}>{summ}₽</div>}
+
                 {fullCard && (
                     <img
                         className={styles.icon_basket_delete}
                         src={iconBasketDelete}
                         alt="iconBasketDelete"
-                        onClick={() => deleteProductArray(product, index)}
+                        onClick={() => deleteProduct(product, 1)}
                     />
                 )}
             </div>
-            {/* <div className={styles.sub_content}>
-                <img
-                    src={iconDelete}
-                    alt="iconDelete"
-                    onClick={() => deleteProduct(product, index)}
-                />
-                <div>{count}</div>
-                <img
-                    src={iconAdd}
-                    alt="iconAdd"
-                    onClick={() => addProduct(product, index)}
-                />
-            </div> */}
         </div>
     );
 };

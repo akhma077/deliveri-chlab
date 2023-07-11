@@ -1,76 +1,72 @@
-import * as React from 'react';
-import styles from './index.module.scss';
-import { BasketCard, Product } from '../../../entities';
+import * as React from "react";
+import styles from "./index.module.scss";
+import { BasketCard, Product } from "../../../entities";
+import { useSelector } from "react-redux";
+import { selectBasket, useActions } from "../../../shared/config";
 
 interface Props {
-  data: any;
-  setData: any;
-  setResetCount: (arg: any) => void;
-  fullCard?: boolean;
-  onlyScroll?: boolean;
+    fullCard?: boolean;
+    onlyScroll?: boolean;
 }
 
-export const BasketContent: React.FC<Props> = ({
-  data,
-  setData,
-  setResetCount,
-  fullCard,
-  onlyScroll,
-}) => {
-  // Добавление продуктов в коризну
-  const handleClickAdd = (item: Product, idx: number) => {
-    setData((prev: any) => {
-      console.log(prev);
-      prev[idx].push(item);
-      return [...prev];
-    });
-  };
-  // Удаление продуктов из корзины
-  const handleClickDelete = (item: Product, idx: number) => {
-    if (data[idx].length === 1) {
-      setData((prev: any) => {
-        return [...prev.filter((elem: any, index: number) => index !== idx)];
-      });
-      setResetCount((prev: any) => ({ ...prev, [item.id]: true }));
-    } else {
-      setData((prev: any) => {
-        prev[idx].pop();
-        return [...prev];
-      });
-    }
-  };
+export const BasketContent: React.FC<Props> = ({ fullCard, onlyScroll }) => {
+    const { basket } = useSelector(selectBasket);
 
-  const handleClickDeleteArray = (item: Product, idx: number) => {
-    setData((prev: any) => {
-      return [...prev.filter((elem: any, index: number) => index !== idx)];
-    });
-  };
+    const {
+        addFirstProductToBasket,
+        addProductToBasket,
+        deleteFirstProductToBasket,
+        deleteProductToBasket,
+    } = useActions();
 
-  const funcSumm = (arrs: Product[]) => {
-    let summ = 0;
-    arrs.map((item) => (summ += item.price));
-    return summ;
-  };
+    // Добавление продуктов в коризну
+    const handleClickAdd = (item: Product, idx: number) => {
+        if (idx === 0) {
+            addFirstProductToBasket(item);
+        } else {
+            addProductToBasket(item);
+        }
+    };
 
-  return (
-    <div className={styles.content + ' ' + (onlyScroll ? styles.content_scroll : '')}>
-      {data.map((products: Product[], index: number) => {
-        return products[0] ? (
-          <BasketCard
-            summ={funcSumm(products)}
-            fullCard={fullCard}
-            product={products[0]}
-            count={products.length}
-            index={index}
-            addProduct={handleClickAdd}
-            deleteProduct={handleClickDelete}
-            deleteProductArray={handleClickDeleteArray}
-            key={index}
-          />
-        ) : (
-          <div>asd</div>
-        );
-      })}
-    </div>
-  );
+    // Удаление продуктов из корзины
+    const handleClickDelete = (item: Product, idx: number | undefined) => {
+        if (idx === 1) {
+            deleteFirstProductToBasket(item);
+        } else {
+            deleteProductToBasket(item);
+        }
+    };
+    // Количество этих продуктов в корзине
+    const funcReturnBasketCount = (item: Product) => {
+        let count = 0;
+        basket.map((ars: Product[]) => {
+            if (ars[0] && ars[0].id === item.id) {
+                count = ars.length;
+            }
+        });
+        return count;
+    };
+
+    return (
+        <div
+            className={
+                styles.content + " " + (onlyScroll ? styles.content_scroll : "")
+            }
+        >
+            {basket.map((products: Product[], index: number) => {
+                return products[0] ? (
+                    <BasketCard
+                        fullCard={fullCard}
+                        product={products[0]}
+                        count={funcReturnBasketCount(products[0])}
+                        addProduct={handleClickAdd}
+                        deleteProduct={handleClickDelete}
+                        key={index}
+                    />
+                ) : (
+                    <div>Возникла ошибка</div>
+                );
+            })}
+        </div>
+    );
 };
