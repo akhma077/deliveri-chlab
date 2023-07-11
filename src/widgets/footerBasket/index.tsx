@@ -1,24 +1,15 @@
 import React from "react";
 import styles from "./index.module.scss";
 import iconArrowTop from "../../shared/assets/img/iconArrowTop.svg";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../shared/config";
+import { Product } from "../../entities";
 
-interface Props {
-    basketActive: boolean;
-    contentActive: boolean;
-    handleClickPayment: () => void;
-    basketSumm: number;
-    basketCount: number;
-    basketRef: any;
-}
+interface Props {}
 
-export const FooterBasket: React.FC<Props> = ({
-    basketActive,
-    contentActive,
-    handleClickPayment,
-    basketSumm,
-    basketCount,
-    basketRef,
-}) => {
+export const FooterBasket: React.FC<Props> = ({}) => {
+    const { basket } = useSelector(selectBasket);
+
     const [basketCountTitle, setBasketCountTitle] =
         React.useState<string>("Количество");
 
@@ -27,51 +18,52 @@ export const FooterBasket: React.FC<Props> = ({
         if (screenWidth < 500) setBasketCountTitle("Кол");
     }, [screenWidth]);
 
+    const funcReturnBasketCountOrSumm = (type: string) => {
+        let count = 0;
+        let summ = 0;
+
+        switch (type) {
+            case "count":
+                basket.map((ars: Product[]) => {
+                    count += ars.length;
+                });
+                return count;
+                break;
+            case "summ":
+                basket.map((ars: Product[]) => {
+                    ars.map((item) => (summ += item.price));
+                });
+                return summ;
+                break;
+
+            default:
+                return 0;
+                break;
+        }
+    };
+
     return (
-        <div
-            className={
-                styles.basket + " " + (basketActive ? styles.basket_active : "")
-            }
-            ref={basketRef}
-        >
-            <div
-                className={
-                    styles.icon_btn +
-                    " " +
-                    (basketActive ? styles.icon_btn_active : "")
-                }
-            >
-                <img onClick={handleClickPayment} src={iconArrowTop} alt="" />
+        <div className={styles.basket}>
+            <div className={styles.icon_btn}>
+                <img src={iconArrowTop} alt="" />
             </div>
 
-            <div
-                className={
-                    styles.content +
-                    " " +
-                    (basketActive ? styles.content_active : "")
-                }
-                style={{ display: contentActive ? "block" : "none" }}
-            >
+            <div className={styles.content}>
                 How to blur background image using CSS ? - GeeksforGeeks
                 geeksforgeeks.org›how…blur-background-image…css/ Меню CSS allows
                 for easy customization of a web page’s color, font, spacing, and
                 other elements to make it a crucial tool for creating
                 professional-looking and functional websites. To blur a
-                background image using CSS, you can use the filter property.
-                Читать ещёCSS allows for easy customization of a web page’s
-                color, font, spacing, and other elements to make it a crucial
-                tool for creating professional-looking and functional websites.
-                To blur a background image using CSS, you can use the filter
-                property. The filter property is used to set the visual effect
-                of an element. Syntax Скрыть Не найдено: размытый
             </div>
 
             <div className={styles.head}>
-                <div className={styles.summ}>Сумма: {basketSumm}₽</div>
-                <div className={styles.count}>
-                    {basketCountTitle}: {basketCount}
+                <div className={styles.summ}>
+                    Сумма: {funcReturnBasketCountOrSumm("summ")}₽
                 </div>
-                <button onClick={handleClickPayment}>Оплатить</button>
+                <div className={styles.count}>
+                    {basketCountTitle}: {funcReturnBasketCountOrSumm("count")}
+                </div>
+                <button>Оплатить</button>
             </div>
         </div>
     );

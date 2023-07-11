@@ -1,73 +1,53 @@
-import * as React from 'react';
-import { Product } from '../types';
-import styles from './index.module.scss';
+import * as React from "react";
+import { Product } from "../types";
+import styles from "./index.module.scss";
 
-import iconAdd from '../../shared/assets/img/iconAdd.svg';
-import iconDelete from '../../shared/assets/img/iconDelete.svg';
+import iconAdd from "../../shared/assets/img/iconAdd.svg";
+import iconDelete from "../../shared/assets/img/iconDelete.svg";
 
 interface Props {
-  product: Product;
-  resetCount: any;
-  setResetCount: (arg: any) => void;
-  basketData: any;
-  addToBasket: (item: Product, idx: number) => void;
-  deleteToBasket: (item: Product, idx: number) => void;
+    product: Product;
+    productCount?: number;
+    addToBasket: (item: Product, idx: number) => void;
+    deleteToBasket: (item: Product, idx: number | undefined) => void;
 }
 
 export const RestaurantCard: React.FC<Props> = ({
-  product,
-  resetCount,
-  setResetCount,
-  basketData,
-  addToBasket,
-  deleteToBasket,
+    product,
+    productCount,
+    addToBasket,
+    deleteToBasket,
 }) => {
-  const [productCount, setProductCount] = React.useState<number>(0);
+    return (
+        <div className={styles.card}>
+            <img src={product.image} alt={product.name} />
+            <div>
+                <div className={styles.card_price}>{product.price}₽</div>
+                <div className={styles.card_name}>{product.name}</div>
+                <div className={styles.card_weight}>{product.weight}</div>
+            </div>
 
-  React.useEffect(() => {
-    basketData.map((elem: any) => {
-      if (elem[0].id === product.id) {
-        console.log(elem.length, 'element - length');
-        setProductCount(elem.length);
-      }
-    });
-    if (resetCount[product.id]) setProductCount(0);
-  }, [basketData]);
-
-  const handleClickCounter = (type: string) => {
-    if (type === '+') {
-      addToBasket(product, 1);
-      setProductCount((prev) => (prev += 1));
-    } else {
-      deleteToBasket(product, 1);
-      setProductCount((prev) => (prev -= 1));
-    }
-  };
-
-  const addProductToBasket = () => {
-    addToBasket(product, 0);
-    setProductCount((prev) => (prev += 1));
-    setResetCount((prev: any) => ({ ...prev, [product.id]: false }));
-  };
-
-  return (
-    <div className={styles.card}>
-      <img src={product.image} alt={product.name} />
-      <div>
-        <div className={styles.card_price}>{product.price}₽</div>
-        <div className={styles.card_name}>{product.name}</div>
-        <div className={styles.card_weight}>{product.weight}</div>
-      </div>
-
-      {productCount === 0 ? (
-        <button onClick={addProductToBasket}>Добавить</button>
-      ) : (
-        <div className={styles.card_count}>
-          <img src={iconDelete} alt="iconDelete" onClick={() => handleClickCounter('-')} />
-          <div className={styles.counter}>{productCount}</div>
-          <img src={iconAdd} alt="iconAdd" onClick={() => handleClickCounter('+')} />
+            {productCount === 0 ? (
+                <div className={styles.btn_div}>
+                    <button onClick={() => addToBasket(product, 0)}>
+                        Добавить
+                    </button>
+                </div>
+            ) : (
+                <div className={styles.card_count}>
+                    <img
+                        src={iconDelete}
+                        alt="iconDelete"
+                        onClick={() => deleteToBasket(product, productCount)}
+                    />
+                    <div className={styles.counter}>{productCount}</div>
+                    <img
+                        src={iconAdd}
+                        alt="iconAdd"
+                        onClick={() => addToBasket(product, 1)}
+                    />
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };

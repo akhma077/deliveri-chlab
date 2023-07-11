@@ -1,12 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { configureStore } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
-import filter from './slices/filterSlice';
+import { filter, basket } from "./slices";
 
 export const store = configureStore({
-  reducer: {
-    filter,
-  },
+    reducer: {
+        filter,
+        basket,
+    },
 });
 
 // типизация useSelector(state:<>)
