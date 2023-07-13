@@ -1,10 +1,10 @@
 .content {
-    flex: 1 0 auto;
-    margin-top: 12px;
-    padding-inline-end: 10px;
-    overflow-y: initial;
+  flex: 1 0 auto;
+  margin-top: 12px;
+  padding-inline-end: 10px;
+  overflow-y: initial;
 }
 .content_scroll {
-    overflow-y: auto;
-    max-height: calc(100vh - 240px);
+  overflow-y: auto;
+  max-height: calc(100vh - 240px);
 }
