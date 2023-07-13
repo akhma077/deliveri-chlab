@@ -1,24 +1,24 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '..';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 type FilterSticeType = {
-  categoryId: number;
+    categoryId: number;
 };
 
 const initialState: FilterSticeType = {
-  categoryId: 0,
+    categoryId: 0,
 };
 
 export const filterSlice = createSlice({
-  name: 'filter',
-  initialState,
-  reducers: {
-    setCategoryId(state, action: PayloadAction<number>) {
-      state.categoryId = action.payload;
+    name: "filter",
+    initialState,
+    reducers: {
+        setCategoryId(state, action: PayloadAction<number>) {
+            state.categoryId = action.payload;
+        },
     },
-  },
 });
 
 export const selectFilter = (state: RootState) => state.filter;
-export const { setCategoryId } = filterSlice.actions;
+export const filterActions = filterSlice.actions;
 export default filterSlice.reducer;

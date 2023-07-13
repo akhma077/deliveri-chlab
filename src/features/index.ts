@@ -1,7 +1,2 @@
 export { RestaurantContent } from "./restaurantContent";
-export {
-    BasketHead,
-    BasketContent,
-    BasketSumm,
-    BasketModal,
-} from "./productBasket";
+export { BasketHead, BasketContent, BasketSumm } from "./productBasket";

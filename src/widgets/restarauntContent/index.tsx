@@ -1,50 +1,25 @@
-import React from 'react';
-import styles from './index.module.scss';
-import { RestarauntHeader } from './../RestarauntHeader';
-import { RestaurantContent } from '../../features';
-import { Product } from '../../entities';
-import { Categories } from '..';
-
+import React from "react";
+import styles from "./index.module.scss";
+import { RestarauntHeader } from "./../RestarauntHeader";
+import { RestaurantContent } from "../../features";
+import { Product } from "../../entities";
+import { Categories } from "..";
 interface Props {
-  data: Product[];
-  resetCount: any;
-  setResetCount: (arg: any) => void;
-  basketData: any;
-  setBasketData: any;
+    data: any;
 }
 
-export const RestarauntContent: React.FC<Props> = ({
-  data,
-  resetCount,
-  setResetCount,
-  basketData,
-  setBasketData,
-}) => {
-  return (
-    <div className={styles.content}>
-      <RestarauntHeader />
+export const RestarauntContent: React.FC<Props> = ({ data }) => {
+    return (
+        <div className={styles.content}>
+            <RestarauntHeader />
 
-      <div className={styles.restaurantContent}>
-        <div className={styles.content__categories}>
-          <Categories />
+            <div className={styles.restaurantContent}>
+                <div className={styles.content__categories}>
+                    <Categories />
+                </div>
+                <RestaurantContent title="Суши" data={data} />
+                <RestaurantContent title="Негры" data={data} />
+            </div>
         </div>
-        <RestaurantContent
-          title="Суши"
-          data={data}
-          resetCount={resetCount}
-          setResetCount={setResetCount}
-          basketData={basketData}
-          setBasketData={setBasketData}
-        />
-        <RestaurantContent
-          title="Негры"
-          data={data}
-          resetCount={resetCount}
-          setResetCount={setResetCount}
-          basketData={basketData}
-          setBasketData={setBasketData}
-        />
-      </div>
-    </div>
-  );
+    );
 };
