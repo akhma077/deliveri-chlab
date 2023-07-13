@@ -2,8 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 import { routePaths } from './routes';
 import { Basket, Restaurant, RestaurantPage } from '../../pages';
 import { MainLayout } from '../layout';
+import { useResetScroll } from '../../shared/hooks/useResetScroll';
 
 export const AppRoutes = () => {
+  // сброс скролла при каждом изменении location
+  useResetScroll();
   return (
     <Routes>
       <Route path={routePaths.home} element={<MainLayout />}>

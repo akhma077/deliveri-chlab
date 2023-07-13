@@ -443,21 +443,23 @@ export const Basket = () => {
             ></path>
           </svg>
         </button>
-        <BasketHead setModalActive={setModal} />
-        <BasketContent
-          setResetCount={setResetCount}
-          data={basketData}
-          setData={setBasketData}
-          fullCard
-        />
-        <FooterBasket
-          basketActive={basketOn}
-          basketRef={ref}
-          contentActive={contentOn}
-          handleClickPayment={handleClickPayment}
-          basketCount={basketCount}
-          basketSumm={basketSumm}
-        />
+        <div className={styles.blocks}>
+          <BasketHead setModalActive={setModal} />
+          <BasketContent
+            setResetCount={setResetCount}
+            data={basketData}
+            setData={setBasketData}
+            fullCard
+          />
+          {/* <FooterBasket
+            basketActive={basketOn}
+            basketRef={ref}
+            contentActive={contentOn}
+            handleClickPayment={handleClickPayment}
+            basketCount={basketCount}
+            basketSumm={basketSumm}
+          /> */}
+        </div>
         <div style={{ height: 100 }}></div>
       </div>
     </div>

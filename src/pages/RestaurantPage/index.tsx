@@ -167,17 +167,21 @@ export const RestaurantPage: React.FC = () => {
 
   const [value, setValue] = React.useState('');
 
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJ0a2h1c3Nzc0BtYWlsLnJ1IiwiZW1haWxDb25maXJtZWQiOiJUcnVlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIk1vZGVyYXRvciIsIlJlc3RhcmF1bnQiXSwibmJmIjoxNjg4OTMzODMyLCJleHAiOjE2ODkwMjAyMzIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwOTIiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MDkyIn0.2hExX8Gs6EJJRI1mF8tEUMZMu4tPoX3PbhIyRffGmJk';
+
   const handleClick = () => {
-    const data = {
+    const dataa = {
       name: value,
     };
-
     fetch('https://crm.kod06.ru/api/v1/categories', {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+
+      body: JSON.stringify(dataa),
     })
       .then((res) => res.json())
       .then((result) => console.log(result))
@@ -192,9 +196,6 @@ export const RestaurantPage: React.FC = () => {
         <div className={styles.categories_plug}>
           <div className={styles.categories}>
             <Categories />
-            {/* <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
-
-            <button onClick={handleClick}>gotovo</button> */}
           </div>
         </div>
 

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Product } from '../types';
 import styles from './index.module.scss';
 
-import iconAdd from '../../shared/assets/img/iconAdd.svg';
-import iconDelete from '../../shared/assets/img/iconDelete.svg';
+// import { ReactComponent as IconAdd } from '../../shared/assets/img/iconAdd.svg';
+// import { ReactComponent as IconDelete } from '../../shared/assets/img/iconDelete.svg';
 
 interface Props {
   product: Product;
@@ -63,9 +63,9 @@ export const RestaurantCard: React.FC<Props> = ({
         <button onClick={addProductToBasket}>Добавить</button>
       ) : (
         <div className={styles.card_count}>
-          <img src={iconDelete} alt="iconDelete" onClick={() => handleClickCounter('-')} />
+          <div onClick={() => handleClickCounter('-')}> - </div>
           <div className={styles.counter}>{productCount}</div>
-          <img src={iconAdd} alt="iconAdd" onClick={() => handleClickCounter('+')} />
+          <div onClick={() => handleClickCounter('+')}>+ </div>
         </div>
       )}
     </div>
