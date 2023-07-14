@@ -19,7 +19,6 @@ export const ProductBasket = ({}) => {
                 )}
                 <BasketHead setModalActive={setModalActive} />
                 <BasketContent onlyScroll />
-                <BasketSumm summ={0} count={0} />
             </div>
         </>
     );

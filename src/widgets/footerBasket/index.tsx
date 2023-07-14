@@ -44,18 +44,6 @@ export const FooterBasket: React.FC<Props> = ({}) => {
 
     return (
         <div className={styles.basket}>
-            <div className={styles.icon_btn}>
-                <img src={iconArrowTop} alt="" />
-            </div>
-
-            <div className={styles.content}>
-                How to blur background image using CSS ? - GeeksforGeeks
-                geeksforgeeks.org›how…blur-background-image…css/ Меню CSS allows
-                for easy customization of a web page’s color, font, spacing, and
-                other elements to make it a crucial tool for creating
-                professional-looking and functional websites. To blur a
-            </div>
-
             <div className={styles.head}>
                 <div className={styles.summ}>
                     Сумма: {funcReturnBasketCountOrSumm("summ")}₽

@@ -99,13 +99,14 @@
 .basketSum {
     position: fixed;
     bottom: 20px;
-    left: 75%;
-
+    left: 90%;
     z-index: 999;
-
     display: none !important;
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1300px) {
         display: block !important;
+    }
+    @media (max-width: 768px) {
+        left: 80%;
     }
 }
