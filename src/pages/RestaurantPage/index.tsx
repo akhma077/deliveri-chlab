@@ -1,230 +1,73 @@
-import * as React from 'react';
-import styles from './index.module.scss';
+import * as React from "react";
+import styles from "./index.module.scss";
+import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
 
-import axios from 'axios';
-
-import testImage from '../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg';
-
-import { Categories, ProductBasket, RestarauntContent } from '../../widgets';
-import { BasketSumm } from '../../features';
+import { Categories, ProductBasket, RestarauntContent } from "../../widgets";
+import { BasketSumm } from "../../features";
+import { useNavigate } from "react-router-dom";
+import { Product } from "../../entities";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../shared/config";
+import { fetchCategories } from "../../shared";
+import { useQuery } from "react-query";
 
 export const RestaurantPage: React.FC = () => {
-  const data = [
-    {
-      id: 123,
-      name: 'Суши',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 12324444444,
-      name: 'Суши 1',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 122114443,
-      name: 'Суши 2',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 124441233,
-      name: 'Суши 3',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 122245153,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 12236782467,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 12233411112112,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 121234424236,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 3,
-      name: 'Суши',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 1,
-      name: 'Суши 1',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 113,
-      name: 'Суши 2',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 1443,
-      name: 'Суши 3',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 1223,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 12,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 12334,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-    {
-      id: 1224236,
-      name: 'Суши 4',
-      image: testImage,
-      price: 300,
-      discount: 1,
-      weight: 199,
-      description: 'Лучшие суши на свете',
-    },
-  ];
+    const { basket } = useSelector(selectBasket);
+    const data = [
+        {
+            id: 123,
+            name: "Суши",
+            image: testImage,
+            price: 300,
+            discount: 1,
+            weight: 199,
+            description: "Лучшие суши на свете",
+        },
+    ];
 
-  const [basketData, setBasketData] = React.useState([]);
-  const [resetCount, setResetCount] = React.useState({});
+    const { data: categoriesData } = useQuery("categories", fetchCategories);
 
-  const [cat, setCat] = React.useState();
+    const navigate = useNavigate();
 
-  React.useEffect(() => {
-    data.map((elem) => setResetCount((prev: any) => ({ ...prev, [elem.id]: false })));
-  }, []);
-
-  const [value, setValue] = React.useState('');
-
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJ0a2h1c3Nzc0BtYWlsLnJ1IiwiZW1haWxDb25maXJtZWQiOiJUcnVlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIk1vZGVyYXRvciIsIlJlc3RhcmF1bnQiXSwibmJmIjoxNjg4OTMzODMyLCJleHAiOjE2ODkwMjAyMzIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwOTIiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MDkyIn0.2hExX8Gs6EJJRI1mF8tEUMZMu4tPoX3PbhIyRffGmJk';
-
-  const handleClick = () => {
-    const dataa = {
-      name: value,
+    // Количество этих продуктов в корзине
+    const funcReturnBasketCount = () => {
+        let count = 0;
+        basket.map((ars: Product[]) => {
+            count += ars.length;
+        });
+        return count;
     };
-    fetch('https://crm.kod06.ru/api/v1/categories', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
 
-      body: JSON.stringify(dataa),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  };
+    return (
+        <div className={styles.page}>
+            <div>
+                <div className={styles.categories_plug}>
+                    <div className={styles.categories}>
+                        <Categories data={categoriesData} />
+                        {/* <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
 
-  console.log('cat', cat);
+                        <button onClick={handleClick}>gotovo</button> */}
+                    </div>
+                </div>
 
-  return (
-    <div className={styles.page}>
-      <div>
-        <div className={styles.categories_plug}>
-          <div className={styles.categories}>
-            <Categories />
-          </div>
+                <RestarauntContent
+                    data={data}
+                    categoriesData={categoriesData}
+                />
+
+                <div className={styles.basket_plug}>
+                    <div className={styles.basket}>
+                        <ProductBasket />
+                    </div>
+                </div>
+            </div>
+            <div className={styles.basketSum}>
+                <BasketSumm
+                    summ={200}
+                    count={funcReturnBasketCount()}
+                    onClick={() => navigate("/basket")}
+                />
+            </div>
         </div>
-
-        <RestarauntContent
-          data={data}
-          resetCount={resetCount}
-          setResetCount={setResetCount}
-          basketData={basketData}
-          setBasketData={setBasketData}
-        />
-
-        <div className={styles.basket_plug}>
-          <div className={styles.basket}>
-            <ProductBasket
-              setResetCount={setResetCount}
-              basketData={basketData}
-              setBasketData={setBasketData}
-            />
-          </div>
-        </div>
-      </div>
-      <div className={styles.basketSum}>
-        <BasketSumm
-          summ={200}
-          count={12}
-
-          // onClick={handleClickBasketSumm}
-        />
-      </div>
-    </div>
-  );
+    );
 };
