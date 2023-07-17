@@ -8,8 +8,7 @@ export const fetchCategories = async () => {
 };
 
 // Автоизация
-export const LoginAPI = async ({ queryKey }: any) => {
-    const [_, user] = queryKey;
+export const LoginAPI = async (user: any) => {
     const { data } = await axios({
         method: "POST",
         url: `${api}/auth/login`,
@@ -26,6 +25,18 @@ export const RegisterAPI = async (user: any) => {
         data: user,
         headers: { "Content-Type": "application/json" },
     });
+    return data;
+};
+
+// Получение ресторанов
+export const getAllRestaurants = async (product: any) => {
+    const { data } = await axios.get(`${api}/restaraunts`);
+    return data;
+};
+// Получение продуктов ресторана
+export const getAllRestaurantProducts = async ({ queryKey }: any) => {
+    const [_, id] = queryKey;
+    const { data } = await axios.get(`${api}/products/${id}`);
     return data;
 };
 

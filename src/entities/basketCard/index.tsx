@@ -25,7 +25,10 @@ export const BasketCard: React.FC<Props> = ({
         <div className={styles.card}>
             <div className={styles.sup_cont}>
                 <div className={styles.cont}>
-                    <img src={product.image} alt={product.name} />
+                    <img
+                        src={`https://crm.kod06.ru${product.image}`}
+                        alt={product.name}
+                    />
                     <div className={styles.content}>
                         <div className={styles.content_name}>
                             {product.name}

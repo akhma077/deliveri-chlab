@@ -16,7 +16,6 @@ export const CreateProductForm = () => {
 
     const onSubmit = (data: any) => {
         createProduct(data);
-        console.log(data);
     };
 
     return (

@@ -6,10 +6,15 @@ import { useSelector } from "react-redux";
 
 interface Props {
     title: string;
+    titleId: number;
     data: Product[];
 }
 
-export const RestaurantContent: React.FC<Props> = ({ title, data }) => {
+export const RestaurantContent: React.FC<Props> = ({
+    title,
+    titleId,
+    data,
+}) => {
     const { basket } = useSelector(selectBasket);
     const {
         addFirstProductToBasket,
@@ -47,8 +52,10 @@ export const RestaurantContent: React.FC<Props> = ({ title, data }) => {
 
     return (
         <>
-            <div className={styles.head}>{title}</div>
-            <div className={styles.content}>
+            <div className={styles.head} id={`scroll-to-${titleId}`}>
+                {title}
+            </div>
+            <div className={styles.content} id="fuuuuu">
                 {data.map((item) => (
                     <RestaurantCard
                         product={item}

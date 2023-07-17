@@ -1,2 +1,9 @@
-export { ModaleOne } from "./UI";
-export { fetchCategories, createProduct, RegisterAPI, LoginAPI } from "./API";
+export { ModaleOne, LoaderUsual } from "./UI";
+export {
+    fetchCategories,
+    createProduct,
+    RegisterAPI,
+    LoginAPI,
+    getAllRestaurants,
+    getAllRestaurantProducts,
+} from "./API";

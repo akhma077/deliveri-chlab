@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./index.module.scss";
-import iconArrowTop from "../../shared/assets/img/iconArrowTop.svg";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../shared/config";
 import { Product } from "../../entities";
 
 interface Props {}
 
-export const FooterBasket: React.FC<Props> = ({}) => {
+export const BasketFooterPanel: React.FC<Props> = ({}) => {
     const { basket } = useSelector(selectBasket);
 
     const [basketCountTitle, setBasketCountTitle] =
@@ -43,15 +42,15 @@ export const FooterBasket: React.FC<Props> = ({}) => {
     };
 
     return (
-        <div className={styles.basket}>
-            <div className={styles.head}>
+        <div className={styles.root}>
+            <div className={styles.basket}>
                 <div className={styles.summ}>
                     Сумма: {funcReturnBasketCountOrSumm("summ")}₽
                 </div>
                 <div className={styles.count}>
                     {basketCountTitle}: {funcReturnBasketCountOrSumm("count")}
                 </div>
-                <button>Оплатить</button>
+                <button className={styles.basket__btn}>Оплатить</button>
             </div>
         </div>
     );

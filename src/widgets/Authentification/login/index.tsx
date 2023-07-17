@@ -1,7 +1,6 @@
 import * as React from "react";
 import styles from "./index.module.scss";
 import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
 import { LoginAPI } from "../../../shared/API/API.service";
 import { useNavigate } from "react-router-dom";
 
@@ -11,21 +10,16 @@ export const LoginForm = () => {
         formState: { errors, isValid },
         handleSubmit,
     } = useForm({ mode: "onChange" });
-    const [user, setUser] = React.useState(null);
-
-    const { data, refetch } = useQuery(["login", user], LoginAPI, {
-        enabled: false,
-    });
 
     const onSubmit = async (data: any) => {
-        await setUser(data);
-        refetch();
+        LoginAPI(data);
     };
 
     const navigate = useNavigate();
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <h2>Вход</h2>
             <input
                 className={styles.text_field}
                 type="text"

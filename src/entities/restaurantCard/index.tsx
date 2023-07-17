@@ -20,7 +20,10 @@ export const RestaurantCard: React.FC<Props> = ({
 }) => {
     return (
         <div className={styles.card}>
-            <img src={product.image} alt={product.name} />
+            <img
+                src={`https://crm.kod06.ru${product.image}`}
+                alt={product.name}
+            />
             <div>
                 <div className={styles.card_price}>{product.price}₽</div>
                 <div className={styles.card_name}>{product.name}</div>

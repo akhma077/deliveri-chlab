@@ -18,6 +18,7 @@ export const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <h2>Регистрация</h2>
             <input
                 type="text"
                 placeholder="Введите ваш email"

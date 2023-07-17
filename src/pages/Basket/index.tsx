@@ -3,10 +3,9 @@ import styles from "./index.module.scss";
 import { BasketContent, BasketHead } from "../../features";
 import { useNavigate } from "react-router-dom";
 import { useDetectClickOutside } from "react-detect-click-outside";
-import { FooterBasket } from "../../widgets";
+import { BasketFooterPanel } from "../../widgets";
 
 export const Basket = () => {
-    const [modal, setModal] = React.useState<boolean>(false);
     const navigate = useNavigate();
 
     return (
@@ -17,8 +16,8 @@ export const Basket = () => {
                     className={styles.categories__btn}
                 >
                     <svg
-                        width="1em"
-                        height="1em"
+                        width="1.4em"
+                        height="1.4em"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -31,9 +30,9 @@ export const Basket = () => {
                         ></path>
                     </svg>
                 </button>
-                <BasketHead setModalActive={setModal} />
+                <BasketHead />
                 <BasketContent fullCard={true} />
-                <FooterBasket />
+                <BasketFooterPanel />
                 <div style={{ height: 100 }}></div>
             </div>
         </div>

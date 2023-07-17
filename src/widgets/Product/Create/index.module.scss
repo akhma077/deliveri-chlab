@@ -45,13 +45,24 @@
             margin-bottom: 6px;
         }
         .text_field {
-            height: 35px;
-            border-radius: 7px;
-
-            border-radius: 5px;
-            border: 1px solid #e3e3e3;
-            background: rgba(227, 227, 227, 0.1);
-            padding: 0 12px;
+            height: 45px;
+            border-radius: 8px;
+            background: #f6f8ff;
+            padding: 0 16px;
+            border: none;
+            transition: 0.2s;
+        }
+        .text_field:hover {
+            background: #eaedff;
+        }
+        .text_field:focus {
+            background: #eaedff;
+        }
+        .error {
+            height: 30px;
+            color: red;
+            font-size: 14px;
+            margin-inline-start: 12px;
         }
         > select {
             height: 30px;
@@ -59,10 +70,14 @@
     }
     > button {
         cursor: pointer;
-        height: 35px;
-        border-radius: 8px;
+        height: 45px;
         margin-top: 24px;
-        border: 1px solid #e2e2e2;
-        background: rgba(226, 226, 226, 0.1);
+        border-radius: 12px;
+        border: none;
+        background: #f6f8ff;
+        transition: 0.2s;
+    }
+    > button:hover {
+        background: #eaedff;
     }
 }

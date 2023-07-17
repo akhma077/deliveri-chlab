@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
+import { ScrollTo } from "react-scroll-to";
 
 type Categories = {
     id: number;
@@ -12,15 +13,25 @@ interface Props {
 }
 
 export const Categories: React.FC<Props> = ({ data }) => {
-    const [activeIdx, setActiveIdx] = React.useState<number>(0);
-
-    const handleClick = (idx: number) => {
-        setActiveIdx(idx);
-    };
-
-    // const categoryRef = React.useRef(null);
-
+    const [activeIdx, setActiveIdx] = React.useState<number>(1);
     const navigate = useNavigate();
+
+    const handleClick = (item: any, scroll: any) => {
+        setActiveIdx(item.id);
+        const elementScrollTop = document.querySelector(
+            `#scroll-to-${item.id}`
+        );
+        let windowWight = window.innerWidth;
+        console.log(windowWight);
+
+        scroll({
+            y:
+                windowWight > 900
+                    ? elementScrollTop?.offsetTop - 100
+                    : elementScrollTop?.offsetTop + 330,
+            smooth: true,
+        });
+    };
 
     return (
         <div className={styles.categories}>
@@ -47,14 +58,20 @@ export const Categories: React.FC<Props> = ({ data }) => {
             <h2 className={styles.categories__title}>Меню</h2>
 
             <ul className={styles.categories__list}>
-                {data?.map((item, idx: number) => (
-                    <li
-                        key={idx}
-                        className={activeIdx === idx ? styles.active : ""}
-                        onClick={() => handleClick(idx)}
-                    >
-                        {item.name}
-                    </li>
+                {data?.map((item) => (
+                    <ScrollTo>
+                        {({ scroll }) => (
+                            <li
+                                key={item.id}
+                                className={
+                                    activeIdx === item.id ? styles.active : ""
+                                }
+                                onClick={() => handleClick(item, scroll)}
+                            >
+                                {item.name}
+                            </li>
+                        )}
+                    </ScrollTo>
                 ))}
             </ul>
         </div>

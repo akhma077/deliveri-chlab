@@ -2,13 +2,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     > div {
         width: 800px;
         position: relative;
     }
 }
 .categories__btn {
+    width: 80px;
+    height: 80px;
     background-color: #ffffff;
     color: black;
     display: flex;
@@ -16,28 +17,31 @@
     justify-content: center;
     border: none;
     padding: 10px;
-    border-radius: 32px;
+    border-radius: 100px;
     cursor: pointer;
-    position: absolute;
-    left: -35px;
-    top: -20px;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 999;
+    box-shadow: 5px 5px 35px rgb(193, 193, 193);
 }
 
 @media (max-width: 900px) {
     .root {
         padding: 0 40px;
-        .top_ele {
-            width: 90vw;
-            left: 5%;
-        }
     }
 }
-
-@media (max-width: 500px) {
+@media (max-width: 778px) {
     .root {
-        .summ {
-            width: 200px !important;
-        }
+        margin-top: 40px;
+    }
+}
+@media (max-width: 576px) {
+    .categories__btn {
+        width: 60px;
+        height: 60px;
+        right: 10px;
+        bottom: 70px;
     }
 }
 

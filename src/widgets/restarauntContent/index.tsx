@@ -22,8 +22,21 @@ export const RestarauntContent: React.FC<Props> = ({
                 <div className={styles.content__categories}>
                     <Categories data={categoriesData} />
                 </div>
-                <RestaurantContent title="Суши" data={data} />
-                <RestaurantContent title="Негры" data={data} />
+                {data?.length > 0 ? (
+                    <>
+                        {data.map((item: any) => (
+                            <RestaurantContent
+                                title={item.name}
+                                titleId={item.id}
+                                data={item.products}
+                            />
+                        ))}
+                    </>
+                ) : (
+                    <div style={{ textAlign: "center", marginTop: 100 }}>
+                        Нет данных
+                    </div>
+                )}
             </div>
         </div>
     );
