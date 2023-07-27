@@ -1,0 +1,15 @@
+@import '../../../scss/_variables.scss';
+
+.root {
+  height: 40px;
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid $neutral-color;
+  border-radius: $base-border-radius;
+
+  margin-top: 4px;
+}
+.root::placeholder {
+  font-size: 14px;
+}

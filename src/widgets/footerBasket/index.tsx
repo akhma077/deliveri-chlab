@@ -24,7 +24,7 @@ export const FooterBasket: React.FC<Props> = ({
 
   const screenWidth = window.screen.width;
   React.useEffect(() => {
-    if (screenWidth < 500) setBasketCountTitle('Кол');
+    if (screenWidth < 500) setBasketCountTitle('Кол-во');
   }, [screenWidth]);
 
   return (

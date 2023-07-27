@@ -1,3 +1,6 @@
-export { Restaurant } from "./Main";
-export { RestaurantPage } from "./RestaurantPage";
-export { Basket } from "./Basket";
+export { Restaurant } from './Main';
+export { RestaurantPage } from './RestaurantPage';
+export { Basket } from './Basket';
+export { RestaurantAccount } from './RestaurantAccount/index';
+export { CheckoutPage } from './CheckoutPage/index';
+export { Success } from './Success/index';

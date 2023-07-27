@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styles from './index.module.scss';
 
-import axios from 'axios';
-
 import testImage from '../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg';
 
 import { Categories, ProductBasket, RestarauntContent } from '../../widgets';
@@ -159,36 +157,9 @@ export const RestaurantPage: React.FC = () => {
   const [basketData, setBasketData] = React.useState([]);
   const [resetCount, setResetCount] = React.useState({});
 
-  const [cat, setCat] = React.useState();
-
   React.useEffect(() => {
     data.map((elem) => setResetCount((prev: any) => ({ ...prev, [elem.id]: false })));
   }, []);
-
-  const [value, setValue] = React.useState('');
-
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJ0a2h1c3Nzc0BtYWlsLnJ1IiwiZW1haWxDb25maXJtZWQiOiJUcnVlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIk1vZGVyYXRvciIsIlJlc3RhcmF1bnQiXSwibmJmIjoxNjg4OTMzODMyLCJleHAiOjE2ODkwMjAyMzIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwOTIiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MDkyIn0.2hExX8Gs6EJJRI1mF8tEUMZMu4tPoX3PbhIyRffGmJk';
-
-  const handleClick = () => {
-    const dataa = {
-      name: value,
-    };
-    fetch('https://crm.kod06.ru/api/v1/categories', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify(dataa),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  };
-
-  console.log('cat', cat);
 
   return (
     <div className={styles.page}>
@@ -221,6 +192,7 @@ export const RestaurantPage: React.FC = () => {
         <BasketSumm
           summ={200}
           count={12}
+          basketInMobile
 
           // onClick={handleClickBasketSumm}
         />

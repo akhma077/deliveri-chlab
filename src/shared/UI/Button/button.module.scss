@@ -1,0 +1,36 @@
+@import '../../../scss/_variables.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  outline: none;
+
+  border: none;
+
+  padding: 8px;
+
+  border-radius: $base-border-radius;
+}
+.buttonSizeMedium {
+  background: none;
+  width: 30px;
+}
+.buttonAddProdVariant {
+  background: white;
+  color: black;
+}
+.buttonSignInHeaderVariant {
+  width: 100px;
+  height: 50px;
+
+  font-weight: 600;
+}
+.buttonBaseVariant {
+  background: $base-color;
+  color: white;
+
+  font-size: 14px;
+}

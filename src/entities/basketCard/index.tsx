@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './index.module.scss';
 import { Product } from '..';
 
-// import { ReactComponent as IconBasketDelete } from '../../shared/assets/img/IconBasketDelete.svg';
+import { ReactComponent as BasketDeleteIcon } from '../../shared/assets/img/IconBasketDelete.svg';
 
 interface Props {
   fullCard: boolean;
@@ -32,7 +32,7 @@ export const BasketCard: React.FC<Props> = ({
         <div className={styles.content}>
           <div className={styles.content_name}>{product.name}</div>
           {fullCard ? '' : <div className={styles.content_price}>{product.price}₽</div>}
-          {fullCard && <div className={styles.summ}>{summ}₽</div>}
+          {fullCard && <div className={styles.summ}>{summ} ₽</div>}
         </div>
         <div className={styles.counter}>
           {/* <img src={'iconDelete'} alt="iconDelete" onClick={() => deleteProduct(product, index)} /> */}
@@ -43,12 +43,12 @@ export const BasketCard: React.FC<Props> = ({
         </div>
       </div>
       {fullCard && (
-        // <IconBasketDelete
-        //   className={styles.icon_basket_delete}
-        //   onClick={() => deleteProductArray(product, index)}
-        // />
+        <BasketDeleteIcon
+          className={styles.icon_basket_delete}
+          onClick={() => deleteProductArray(product, index)}
+        />
 
-        <div className={styles.icon_basket_delete}>+</div>
+        // <div className={styles.icon_basket_delete}>+</div>
       )}
     </div>
   );
