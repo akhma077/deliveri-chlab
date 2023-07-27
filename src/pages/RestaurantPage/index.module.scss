@@ -95,10 +95,15 @@
     z-index: 999;
     display: none !important;
 
-    @media (max-width: 1300px) {
+
+  @media (max-width: 576px) {
+    display: block !important;
+  }
+  @media (max-width: 1300px) {
         display: block !important;
     }
     @media (max-width: 768px) {
         left: 80%;
     }
+
 }

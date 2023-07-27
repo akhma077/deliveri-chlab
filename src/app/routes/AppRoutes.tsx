@@ -1,28 +1,31 @@
-import { Route, Routes } from "react-router-dom";
-import { routePaths } from "./routes";
+
+import { Routes, Route } from 'react-router-dom';
+import { routePaths } from './routes';
 import {
-    Basket,
-    CreateProduct,
-    Login,
+  Basket,
+  Restaurant,
+  RestaurantAccount,
+  RestaurantPage,
+  CheckoutPage,
+  Success,CreateProduct,Login,
     Register,
-    Restaurant,
-    RestaurantPage,
-} from "../../pages";
-import { MainLayout } from "../layout";
-import { useResetScroll } from "../../shared/hooks/useResetScroll";
+} from '../../pages';
+import { MainLayout } from '../layout';
+import { useResetScroll } from '../../shared/hooks/useResetScroll';
 
 export const AppRoutes = () => {
-    useResetScroll();
-    return (
-        <Routes>
-            <Route path={routePaths.home} element={<MainLayout />}>
-                <Route path={""} element={<Restaurant />}></Route>
-                <Route
-                    path={routePaths.restaraunt}
-                    element={<RestaurantPage />}
-                ></Route>
-                <Route path={routePaths.basket} element={<Basket />}></Route>
-                <Route path={routePaths.login} element={<Login />}></Route>
+  // сброс скролла при каждом изменении location
+  useResetScroll();
+  return (
+    <Routes>
+      <Route path={routePaths.home} element={<MainLayout />}>
+        <Route path={''} element={<Restaurant />}></Route>
+        <Route path={routePaths.restaraunt} element={<RestaurantPage />}></Route>
+        <Route path={routePaths.basket} element={<Basket />}></Route>
+        <Route path={routePaths.personalAccount} element={<RestaurantAccount />}></Route>
+        <Route path={routePaths.checkoutPage} element={<CheckoutPage />}></Route>
+        <Route path={routePaths.success} element={<Success />}></Route>
+        <Route path={routePaths.login} element={<Login />}></Route>
                 <Route
                     path={routePaths.register}
                     element={<Register />}
@@ -31,8 +34,7 @@ export const AppRoutes = () => {
                     path={routePaths.createProduct}
                     element={<CreateProduct />}
                 ></Route>
-            </Route>
-        </Routes>
-    );
-
+      </Route>
+    </Routes>
+  );
 };

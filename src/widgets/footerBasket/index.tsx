@@ -1,3 +1,4 @@
+
 import React from "react";
 import styles from "./index.module.scss";
 import iconArrowTop from "../../shared/assets/img/iconArrowTop.svg";

@@ -1,0 +1,86 @@
+@import '../../scss/variables';
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+
+    padding: 24px;
+
+    border-radius: $base-border-radius;
+
+    row-gap: 10px;
+
+    position: relative;
+
+    &__icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+
+      top: 10px;
+
+      border-radius: 50%;
+
+      background-color: $base-color;
+
+      animation: anCard 800ms;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg path {
+        stroke: white;
+      }
+
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &__title {
+      margin-top: 42px;
+    }
+
+    &button {
+    }
+  }
+
+  @media (max-width: 576px) {
+    &__container {
+      width: 85vw;
+
+      padding: 12px !important;
+
+      &__title {
+        margin-top: 52px;
+      }
+
+      &__description {
+        font-size: 10px;
+      }
+    }
+  }
+}
+@keyframes anCard {
+  0% {
+    margin-top: -50px;
+  }
+  40% {
+    margin-top: 30px;
+  }
+  70% {
+    margin-top: -5px;
+  }
+  100% {
+  }
+}

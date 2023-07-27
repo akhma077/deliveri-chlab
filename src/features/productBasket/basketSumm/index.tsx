@@ -1,24 +1,42 @@
-import * as React from 'react';
-import styles from './index.module.scss';
-// import iconCart from '../../../shared/assets/img/iconCart.svg';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ReactComponent as BasketIcon } from '../../../shared/assets/img/BasketIcon.svg';
 
-// import { ReactComponent as Icon } from '../../../shared/assets/img/BasketIcon.svg';
+import classNames from 'classnames';
+
+import styles from './index.module.scss';
 
 interface Props {
   summ?: number;
   count?: number;
   onClick?: () => void;
+  basketInMobile?: boolean;
 }
 
-export const BasketSumm: React.FC<Props> = ({ summ, count, onClick }) => {
+export const BasketSumm: React.FC<Props> = ({ count, basketInMobile, summ }) => {
   const navigate = useNavigate();
   return (
-    <div className={styles.bask} onClick={() => navigate('/basket')}>
-      <div>
-        <span> {count}</span>
+    <div
+      className={classNames(styles.basketInHeader, {
+        [styles.bask]: basketInMobile,
+      })}
+      onClick={() => navigate('/basket')}
+    >
+      <div
+        className={classNames(styles.basketCount, {
+          [styles.basketCountMobile]: basketInMobile,
+        })}
+      >
+        <span>{count}</span>
       </div>
-      <button>Icon</button>
+
+      <button
+        className={classNames(styles.basketInHeaderButton, {
+          [styles.basketIcon]: basketInMobile,
+        })}
+      >
+        {basketInMobile && <BasketIcon />}
+      </button>
     </div>
   );
 };

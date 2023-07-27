@@ -1,12 +1,12 @@
-import * as React from "react";
-import styles from "./index.module.scss";
-import { BasketContent, BasketHead, BasketSumm } from "../../features";
-import { ModaleOne } from "../../shared";
+import * as React from 'react';
+import styles from './index.module.scss';
+import { BasketContent, BasketHead, BasketSumm } from '../../features';
+import { ModaleOne } from '../../shared';
 
 export const ProductBasket = ({}) => {
-    const [modalActive, setModalActive] = React.useState<boolean>(false);
+  const [modalActive, setModalActive] = React.useState<boolean>(false);
 
-    return (
+ return (
         <>
             <div className={styles.basket}>
                 {modalActive && (

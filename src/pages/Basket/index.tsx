@@ -414,6 +414,8 @@ export const Basket = () => {
 
     setBasketOn((prev) => !prev);
     () => clearTimeout(timesOut);
+
+    navigate('/checkoutPage');
   };
   const ref = useDetectClickOutside({
     onTriggered: () => {
@@ -451,14 +453,14 @@ export const Basket = () => {
             setData={setBasketData}
             fullCard
           />
-          {/* <FooterBasket
+          <FooterBasket
             basketActive={basketOn}
             basketRef={ref}
             contentActive={contentOn}
             handleClickPayment={handleClickPayment}
             basketCount={basketCount}
             basketSumm={basketSumm}
-          /> */}
+          />
         </div>
         <div style={{ height: 100 }}></div>
       </div>

@@ -1,0 +1,8 @@
+.root {
+  font-size: 12px;
+  white-space: nowrap;
+
+  &__helperTextError {
+    color: red;
+  }
+}

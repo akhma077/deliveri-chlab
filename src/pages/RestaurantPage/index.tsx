@@ -71,3 +71,4 @@ export const RestaurantPage: React.FC = () => {
         </div>
     );
 };
+

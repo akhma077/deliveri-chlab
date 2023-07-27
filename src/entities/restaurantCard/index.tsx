@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Product } from '../types';
 import styles from './index.module.scss';
+import { Button, ButtonSize, ButtonVariant } from '../../shared/UI/Button';
 
 // import { ReactComponent as IconAdd } from '../../shared/assets/img/iconAdd.svg';
 // import { ReactComponent as IconDelete } from '../../shared/assets/img/iconDelete.svg';
@@ -24,15 +25,15 @@ export const RestaurantCard: React.FC<Props> = ({
 }) => {
   const [productCount, setProductCount] = React.useState<number>(0);
 
-  React.useEffect(() => {
-    basketData.map((elem: any) => {
-      if (elem[0].id === product.id) {
-        console.log(elem.length, 'element - length');
-        setProductCount(elem.length);
-      }
-    });
-    if (resetCount[product.id]) setProductCount(0);
-  }, [basketData]);
+  // React.useEffect(() => {
+  //   basketData?.map((elem: any) => {
+  //     if (elem[0].id === product.id) {
+  //       console.log(elem.length, 'element - length');
+  //       setProductCount(elem.length);
+  //     }
+  //   });
+  //   if (resetCount[product.id]) setProductCount(0);
+  // }, [basketData]);
 
   const handleClickCounter = (type: string) => {
     if (type === '+') {
@@ -60,12 +61,18 @@ export const RestaurantCard: React.FC<Props> = ({
       </div>
 
       {productCount === 0 ? (
-        <button onClick={addProductToBasket}>Добавить</button>
+        <Button onClick={addProductToBasket} variant={ButtonVariant.AddProd}>
+          Добавить
+        </Button>
       ) : (
         <div className={styles.card_count}>
-          <div onClick={() => handleClickCounter('-')}> - </div>
+          <Button size={ButtonSize.Medium} onClick={() => handleClickCounter('-')}>
+            -
+          </Button>
           <div className={styles.counter}>{productCount}</div>
-          <div onClick={() => handleClickCounter('+')}>+ </div>
+          <Button size={ButtonSize.Medium} onClick={() => handleClickCounter('+')}>
+            +
+          </Button>
         </div>
       )}
     </div>
