@@ -16,21 +16,16 @@ export const Categories: React.FC<Props> = ({ data }) => {
     const [activeIdx, setActiveIdx] = React.useState<number>(1);
     const navigate = useNavigate();
 
-    const handleClick = (item: any, scroll: any) => {
+    const handleClick = (item: any) => {
         setActiveIdx(item.id);
-        const elementScrollTop = document.querySelector(
-            `#scroll-to-${item.id}`
-        );
-        let windowWight = window.innerWidth;
-        console.log(windowWight);
 
-        scroll({
-            y:
-                windowWight > 900
-                    ? elementScrollTop?.offsetTop - 100
-                    : elementScrollTop?.offsetTop + 330,
-            smooth: true,
-        });
+        // scroll({
+        //     y:
+        //         windowWight > 900
+        //             ? elementScrollTop?.offsetTop - 100
+        //             : elementScrollTop?.offsetTop + 330,
+        //     smooth: true,
+        // });
     };
 
     return (
@@ -60,13 +55,13 @@ export const Categories: React.FC<Props> = ({ data }) => {
             <ul className={styles.categories__list}>
                 {data?.map((item) => (
                     <ScrollTo>
-                        {({ scroll }) => (
+                        {({}) => (
                             <li
                                 key={item.id}
                                 className={
                                     activeIdx === item.id ? styles.active : ""
                                 }
-                                onClick={() => handleClick(item, scroll)}
+                                onClick={() => handleClick(item)}
                             >
                                 {item.name}
                             </li>

@@ -1,8 +1,6 @@
-import * as React from "react";
 import styles from "./index.module.scss";
 import { BasketContent, BasketHead } from "../../features";
 import { useNavigate } from "react-router-dom";
-import { useDetectClickOutside } from "react-detect-click-outside";
 import { BasketFooterPanel } from "../../widgets";
 
 export const Basket = () => {

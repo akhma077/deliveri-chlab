@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { Product } from "../../../../entities";
-import testImage from "../../../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
-import { act } from "react-dom/test-utils";
 
 const initialState: { basket: any } = {
     basket: [],
@@ -33,7 +31,9 @@ export const basketSlice = createSlice({
             state.basket.map((ars: Product[], index: number) => {
                 if (ars[0].id === action.payload.id) {
                     state.basket = [...state.basket].filter(
-                        (item: Product, indexTwo: number) => index !== indexTwo
+                        (item: Product, indexTwo: number) => {
+                            if (index !== indexTwo) return item;
+                        }
                     );
                 }
             });

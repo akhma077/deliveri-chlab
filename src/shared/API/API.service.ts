@@ -1,5 +1,8 @@
 import axios from "axios";
 import { api } from "./config.json";
+import { parseCookies } from "nookies";
+
+const { authToken } = parseCookies();
 
 // Получение категорий
 export const fetchCategories = async () => {
@@ -29,7 +32,7 @@ export const RegisterAPI = async (user: any) => {
 };
 
 // Получение ресторанов
-export const getAllRestaurants = async (product: any) => {
+export const getAllRestaurants = async () => {
     const { data } = await axios.get(`${api}/restaraunts`);
     return data;
 };
@@ -46,7 +49,10 @@ export const createProduct = async (product: any) => {
         method: "POST",
         url: `${api}/products`,
         data: product,
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${authToken}`,
+        },
     });
     return data;
 };

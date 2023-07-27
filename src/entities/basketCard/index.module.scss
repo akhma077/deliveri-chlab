@@ -5,7 +5,7 @@
     .sup_cont {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
         animation: anCard 0.3s;
     }
     .sub_content {
@@ -18,7 +18,7 @@
     .cont {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+
         img {
             width: 70px;
             height: 70px;
@@ -42,15 +42,16 @@
             width: 100px;
             display: flex;
             align-items: center;
-            margin-inline-end: 12px;
-            > img {
-                width: 24px;
+            margin-inline-end: 24px;
+            margin-left: auto;
+            .count_btn {
+                width: 36px;
                 height: 24px;
                 transition: 0.2s;
                 cursor: pointer;
                 border-radius: 5px;
             }
-            > img:hover {
+            .count_btn:hover {
                 transform: scale(1.1);
                 background-color: rgb(209 207 207);
             }

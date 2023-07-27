@@ -1,29 +1,45 @@
 import * as React from "react";
 import styles from "./index.module.scss";
 import { useForm } from "react-hook-form";
-import iconCamera from "../../../shared/assets/img/iconCamera.svg";
+import { ReactComponent as IconCamera } from "../../../shared/assets/img/iconCamera.svg";
 import { createProduct, fetchCategories } from "../../../shared";
 import { useQuery } from "react-query";
 
 export const CreateProductForm = () => {
     const { data: categoriesData } = useQuery("categories", fetchCategories);
+    const [modal, setModal] = React.useState<boolean>(false);
     const {
         register,
         // formState: { errors, isValid },
         handleSubmit,
+        reset,
     } = useForm({ mode: "onChange" });
     const [image, setImage] = React.useState<any>();
 
-    const onSubmit = (data: any) => {
-        createProduct(data);
+    const onSubmit = async (data: any) => {
+        try {
+            const res = await createProduct(data);
+            if (res) {
+                setModal(true);
+                reset();
+            }
+        } catch (error) {}
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            {modal && (
+                <div className={styles.modal} onClick={() => setModal(false)}>
+                    <div>
+                        <p>Продукт успешно добавлен!</p>
+                        <button>Отлично</button>
+                    </div>
+                </div>
+            )}
             <div className={styles.form__imgroot}>
                 {!image && (
                     <>
-                        <img className={styles.plug} src={iconCamera} alt="" />
+                        <IconCamera className={styles.plug} />
                         <div>Выберите фото</div>
                     </>
                 )}
@@ -36,8 +52,10 @@ export const CreateProductForm = () => {
                 )}
                 <input
                     type="file"
-                    {...register("image")}
-                    onChange={(e) => setImage(e.target.files[0])}
+                    {...register("Image")}
+                    onChange={(e) =>
+                        setImage(e.target.files ? e.target.files[0] : "")
+                    }
                 />
             </div>
             <div className={styles.text_field_root}>
@@ -45,7 +63,15 @@ export const CreateProductForm = () => {
                 <input
                     className={styles.text_field}
                     type="text"
-                    {...register("name")}
+                    {...register("Name")}
+                />
+            </div>
+            <div className={styles.text_field_root}>
+                <label>Описание</label>
+                <input
+                    className={styles.text_field}
+                    type="text"
+                    {...register("Description")}
                 />
             </div>
             <div className={styles.text_field_root}>
@@ -53,7 +79,7 @@ export const CreateProductForm = () => {
                 <input
                     className={styles.text_field}
                     type="text"
-                    {...register("price")}
+                    {...register("Price")}
                 />
             </div>
             <div className={styles.text_field_root}>
@@ -61,12 +87,15 @@ export const CreateProductForm = () => {
                 <input
                     className={styles.text_field}
                     type="text"
-                    {...register("weight")}
+                    {...register("Weight")}
                 />
             </div>
             <div className={styles.text_field_root}>
                 <label>Категория</label>
-                <select {...register("categoryId")}>
+                <select {...register("CategoryId")}>
+                    <option selected disabled>
+                        Выберите категорию
+                    </option>
                     {categoriesData?.map((item: any, index: number) => (
                         <option value={item.id} key={index}>
                             {item.name}

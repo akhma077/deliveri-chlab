@@ -2,9 +2,9 @@ import * as React from "react";
 import styles from "./index.module.scss";
 import { Product } from "..";
 
-import iconAdd from "../../shared/assets/img/iconAdd.svg";
-import iconDelete from "../../shared/assets/img/iconDelete.svg";
-import iconBasketDelete from "../../shared/assets/img/iconBasketDelete.svg";
+import { ReactComponent as IconAdd } from "../../shared/assets/img/iconAdd.svg";
+import { ReactComponent as IconDelete } from "../../shared/assets/img/iconDelete.svg";
+import { ReactComponent as IconBasketDelete } from "../../shared/assets/img/iconBasketDelete.svg";
 
 interface Props {
     fullCard?: boolean;
@@ -38,25 +38,21 @@ export const BasketCard: React.FC<Props> = ({
                         </div>
                     </div>
                     <div className={styles.counter}>
-                        <img
-                            src={iconDelete}
-                            alt="iconDelete"
+                        <IconDelete
+                            className={styles.count_btn}
                             onClick={() => deleteProduct(product, count)}
                         />
                         <div>{count}</div>
-                        <img
-                            src={iconAdd}
-                            alt="iconAdd"
+                        <IconAdd
+                            className={styles.count_btn}
                             onClick={() => addProduct(product, 1)}
                         />
                     </div>
                 </div>
 
                 {fullCard && (
-                    <img
+                    <IconBasketDelete
                         className={styles.icon_basket_delete}
-                        src={iconBasketDelete}
-                        alt="iconBasketDelete"
                         onClick={() => deleteProduct(product, 1)}
                     />
                 )}

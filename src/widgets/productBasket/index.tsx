@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./index.module.scss";
-import { BasketContent, BasketHead, BasketSumm } from "../../features";
+import { BasketContent, BasketHead } from "../../features";
 import { ModaleOne } from "../../shared";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../shared/config";

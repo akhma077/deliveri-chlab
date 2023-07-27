@@ -13,5 +13,5 @@ export const routePaths: RoutePaths = {
     basket: "basket",
     login: "login",
     register: "register",
-    createProduct: "createProduct",
+    createProduct: "create-product",
 };

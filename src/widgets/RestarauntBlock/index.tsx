@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const RestarauntBlock: React.FC<Props> = ({ data }) => {
-    console.log("https://crm.kod06.ru" + data[0].image);
-
     return (
         <div className={styles.root}>
             {data.map((obj: any, idx: any) => (

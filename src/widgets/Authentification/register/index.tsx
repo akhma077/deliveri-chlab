@@ -1,20 +1,34 @@
 import * as React from "react";
 import styles from "./index.module.scss";
 import { useForm } from "react-hook-form";
-import { RegisterAPI } from "../../../shared/";
+import { RegisterAPI } from "../../../shared";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "nookies";
 
 export const RegisterForm = () => {
     const {
         register,
-        formState: { errors, isValid },
+        formState: { errors },
         handleSubmit,
     } = useForm({ mode: "onChange" });
+    const navigate = useNavigate();
+    const [status, setStatus] = React.useState<string>("");
+    const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
     const onSubmit = async (data: any) => {
-        RegisterAPI(data);
+        setIsLoading(true);
+        try {
+            const { accessToken } = await RegisterAPI(data);
+            setCookie(accessToken, "authToken", "authToken", {
+                maxAge: 30 * 24 * 60 * 60,
+                path: "/",
+            });
+            navigate("/");
+        } catch (error) {
+            setStatus("Проверьте ваши данные");
+        }
+        setIsLoading(false);
     };
-    const navigate = useNavigate();
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -28,7 +42,7 @@ export const RegisterForm = () => {
                 })}
             />
             <div className={styles.error}>
-                {errors?.Email && <p>{errors?.Email?.message || "error"}</p>}
+                {errors?.Email && <p>Проверьте данное поле</p>}
             </div>
             <input
                 className={styles.text_field}
@@ -43,9 +57,7 @@ export const RegisterForm = () => {
                 })}
             />
             <div className={styles.error}>
-                {errors?.Password && (
-                    <p>{errors?.Password?.message || "error"}</p>
-                )}
+                {errors?.Password && <p>Проверьте данное поле</p>}
             </div>
             <input
                 className={styles.text_field}
@@ -60,11 +72,14 @@ export const RegisterForm = () => {
                 })}
             />
             <div className={styles.error}>
-                {errors?.PasswordConfirmation && (
-                    <p>{errors?.PasswordConfirmation?.message || "error"}</p>
-                )}
+                {errors?.PasswordConfirmation && <p>Проверьте данное поле</p>}
             </div>
-            <button>Зарегистрироваться</button>
+            {status && (
+                <div style={{ height: 20, color: "red" }}>
+                    <p style={{ textAlign: "center" }}>{status}</p>
+                </div>
+            )}
+            <button>{isLoading ? "Ждите..." : "Зарегистрироваться"}</button>
             <div className={styles.bott}>
                 У вас уже есть аккаунт?{" "}
                 <div onClick={() => navigate("/login")}>Войти</div>

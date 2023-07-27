@@ -25,6 +25,8 @@ export const RestaurantPage: React.FC = () => {
         return count;
     };
 
+    console.log(data);
+
     return (
         <div className={styles.page}>
             <div>
@@ -34,8 +36,27 @@ export const RestaurantPage: React.FC = () => {
                     </div>
                 </div>
 
-                {data?.length > 0 ? (
-                    <RestarauntContent data={data} categoriesData={data} />
+                {data ? (
+                    <>
+                        {data?.length > 0 ? (
+                            <RestarauntContent
+                                data={data}
+                                categoriesData={data}
+                            />
+                        ) : (
+                            <div
+                                style={{
+                                    width: "50vw",
+                                    height: "70vh",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                Нет данных
+                            </div>
+                        )}
+                    </>
                 ) : (
                     <div
                         style={{
