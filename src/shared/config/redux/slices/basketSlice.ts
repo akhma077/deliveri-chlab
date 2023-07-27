@@ -47,6 +47,10 @@ export const basketSlice = createSlice({
             });
             state.basket = [...state.basket];
         },
+        // Удаление все продуктов из корзины
+        deleteAllProductsToBasket(state) {
+            state.basket = [];
+        },
     },
 });
 

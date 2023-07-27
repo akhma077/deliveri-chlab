@@ -1,31 +1,18 @@
 import * as React from "react";
 import styles from "./index.module.scss";
-import testImage from "../../shared/assets/img/b524370421f7498ff97f82f4fe3922ac.jpeg";
-
 import { Categories, ProductBasket, RestarauntContent } from "../../widgets";
 import { BasketSumm } from "../../features";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../entities";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../shared/config";
-import { fetchCategories } from "../../shared";
+import { LoaderUsual, getAllRestaurantProducts } from "../../shared";
 import { useQuery } from "react-query";
 
 export const RestaurantPage: React.FC = () => {
     const { basket } = useSelector(selectBasket);
-    const data = [
-        {
-            id: 123,
-            name: "Суши",
-            image: testImage,
-            price: 300,
-            discount: 1,
-            weight: 199,
-            description: "Лучшие суши на свете",
-        },
-    ];
-
-    const { data: categoriesData } = useQuery("categories", fetchCategories);
+    const { id } = useParams();
+    const { data } = useQuery(["products", id], getAllRestaurantProducts);
 
     const navigate = useNavigate();
 
@@ -38,23 +25,57 @@ export const RestaurantPage: React.FC = () => {
         return count;
     };
 
+    console.log(data);
+
     return (
         <div className={styles.page}>
             <div>
                 <div className={styles.categories_plug}>
                     <div className={styles.categories}>
-                        <Categories data={categoriesData} />
-                        {/* <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
-
-                        <button onClick={handleClick}>gotovo</button> */}
+                        <Categories data={data} />
                     </div>
                 </div>
 
-                <RestarauntContent
-                    data={data}
-                    categoriesData={categoriesData}
-                />
-
+                {data ? (
+                    <>
+                        {data?.length > 0 ? (
+                            <RestarauntContent
+                                data={data}
+                                categoriesData={data}
+                            />
+                        ) : (
+                            <div
+                                style={{
+                                    width: "50vw",
+                                    height: "70vh",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                Нет данных
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <div
+                        style={{
+                            width: "50vw",
+                            height: "70vh",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <LoaderUsual
+                            size={"large"}
+                            weightVariant={"large"}
+                            title="Mecviho"
+                            animationVariant="primary"
+                            iconVariant={"medium"}
+                        />
+                    </div>
+                )}
                 <div className={styles.basket_plug}>
                     <div className={styles.basket}>
                         <ProductBasket />
@@ -71,4 +92,3 @@ export const RestaurantPage: React.FC = () => {
         </div>
     );
 };
-

@@ -7,3 +7,4 @@ export { RestarauntBlock } from "./RestarauntBlock";
 export { FooterBasket } from "./footerBasket";
 export { LoginForm, RegisterForm } from "./Authentification";
 export { CreateProductForm } from "./Product";
+export { BasketFooterPanel } from "./BasketFooterPanel";

@@ -1,0 +1,61 @@
+// Начальные стили
+
+.loader {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    margin-inline-end: 8px;
+}
+.icon_small {
+    width: 24px;
+    height: 24px;
+}
+.icon_medium {
+    width: 48px;
+    height: 48px;
+}
+.icon_large {
+    width: 72px;
+    height: 72px;
+}
+// Варианты анимаций
+.primary_animation {
+    animation: primaryAnima 1s infinite;
+}
+
+// Размер текста
+.small {
+    font-size: 16px;
+}
+.medium {
+    font-size: 24px;
+}
+.large {
+    font-size: 32px;
+}
+
+// Жирность текста
+.small_weight {
+    font-weight: 500;
+}
+.medium_weight {
+    font-weight: 600;
+}
+.large_weight {
+    font-weight: 700;
+}
+
+// Анимации
+@keyframes primaryAnima {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
