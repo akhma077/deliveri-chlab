@@ -15,7 +15,7 @@ export const RestarauntBlock: React.FC<Props> = ({ data }) => {
                     <div
                         className={styles.root__bg_image}
                         style={{
-                            backgroundImage: `url(https://crm.kod06.ru${obj.image})`,
+                            backgroundImage: `url(https://95.163.235.15/${obj.image})`,
                         }}
                     >
                         <div className={styles.root__delivery_time_block}>

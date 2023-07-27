@@ -21,7 +21,7 @@ export const RestaurantCard: React.FC<Props> = ({
     return (
         <div className={styles.card}>
             <img
-                src={`https://crm.kod06.ru${product.image}`}
+                src={`https://95.163.235.15/${product.image}`}
                 alt={product.name}
             />
             <div>

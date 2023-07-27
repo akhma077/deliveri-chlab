@@ -7,8 +7,21 @@ import { ReactComponent as LogoIcon } from "../../shared/assets/img/headerLogo2.
 
 import style from "./index.module.scss";
 import { Button, ButtonVariant } from "../../shared/UI/Button";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../shared/config";
+import { Product } from "../../entities";
 
 export const Header: React.FC = () => {
+    const { basket } = useSelector(selectBasket);
+
+    const funcReturnBasketCount = () => {
+        let count = 0;
+        basket.map((ars: Product[]) => {
+            count += ars.length;
+        });
+        return count;
+    };
+
     const navigate = useNavigate();
     return (
         <header className={style.header}>
@@ -24,7 +37,7 @@ export const Header: React.FC = () => {
                     onClick={() => navigate("/basket")}
                 >
                     <BasketHeaderIcon />
-                    <BasketSumm summ={200} count={0} />
+                    {funcReturnBasketCount()}
                 </div>
                 <div className={style.header__signIn}>
                     <Button

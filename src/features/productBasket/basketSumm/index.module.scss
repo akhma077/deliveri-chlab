@@ -1,34 +1,22 @@
-.basketInHeader {
-    .basketInHeaderButton {
-        position: static;
-        display: none;
-    }
-}
-
 .bask {
-    height: 70px;
+    height: 80px;
+    width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #fff;
     border-radius: 50%;
     position: relative;
-    width: 80px;
-
-    bottom: 30px;
 
     div {
         position: absolute;
         background: red;
         color: white;
-        bottom: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 100px;
         font-size: 12px;
-        padding: 5px;
-        left: 50px;
+        padding: 2px 7px;
+        right: 12px;
+        top: 20px;
     }
     > button {
         // border: 1px solid #bebebe;
@@ -36,61 +24,46 @@
         cursor: pointer;
         background: none;
         height: 50px;
-        border-radius: 25px;
+        border-radius: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
-        column-gap: 12px;
-        padding: 12px;
 
-        div {
-            position: absolute;
-            background: red;
-            color: white;
-            border-radius: 100px;
-            font-size: 12px;
-            padding: 2px 7px;
-            right: 12px;
-            top: 20px;
-            svg {
-                width: 35px;
-                height: 35px;
-            }
-            > div {
-                width: 50%;
-            }
-            > div:last-child {
-                border-left: 1px solid #bebebe;
-                > img {
-                    width: 20px;
-                }
+        svg {
+            width: 35px;
+            height: 35px;
+        }
+        > div {
+            width: 50%;
+        }
+        > div:last-child {
+            border-left: 1px solid #bebebe;
+            > img {
+                width: 20px;
             }
         }
     }
-    @media (max-width: 576px) {
-        .bask {
-            height: 60px;
+}
+@media (max-width: 576px) {
+    .bask {
+        height: 60px;
+        width: 60px;
+
+        box-shadow: 5px 5px 35px rgb(193, 193, 193);
+
+        div {
+            font-size: 10px;
+            right: 7px;
+            top: 12px;
+        }
+
+        button {
             width: 60px;
-
-            box-shadow: 5px 5px 35px rgb(193, 193, 193);
-
-            div {
-                font-size: 10px;
-
-                padding: 5px;
-                bottom: 30px;
-                left: 30px;
-            }
-
-            button {
-                width: 60px;
-                padding: 10px;
-                column-gap: 0;
-
-                svg {
-                    width: 30px;
-                    height: 30px;
-                }
+            padding: 10px;
+            column-gap: 0;
+            svg {
+                width: 30px;
+                height: 30px;
             }
         }
     }

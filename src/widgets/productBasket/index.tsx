@@ -1,12 +1,23 @@
-import * as React from 'react';
-import styles from './index.module.scss';
-import { BasketContent, BasketHead, BasketSumm } from '../../features';
-import { ModaleOne } from '../../shared';
+import * as React from "react";
+import styles from "./index.module.scss";
+import { BasketContent, BasketHead, BasketSumm } from "../../features";
+import { ModaleOne } from "../../shared";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../shared/config";
+import { Product } from "../../entities";
 
 export const ProductBasket = ({}) => {
-  const [modalActive, setModalActive] = React.useState<boolean>(false);
+    const [modalActive, setModalActive] = React.useState<boolean>(false);
+    const { basket } = useSelector(selectBasket);
 
- return (
+    const funcReturnBasketSumm = () => {
+        let summ = 0;
+        basket.map((ars: Product[]) => {
+            ars.map((item) => (summ += item.price));
+        });
+        return summ;
+    };
+    return (
         <>
             <div className={styles.basket}>
                 {modalActive && (
@@ -17,8 +28,11 @@ export const ProductBasket = ({}) => {
                         clickYes={() => console.log()}
                     />
                 )}
-                <BasketHead setModalActive={setModalActive} />
+                <BasketHead />
                 <BasketContent onlyScroll />
+                <div className={styles.basket_summ}>
+                    <button>{funcReturnBasketSumm()}₽ - Оплатить</button>
+                </div>
             </div>
         </>
     );
