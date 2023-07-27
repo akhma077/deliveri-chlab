@@ -1,3 +1,4 @@
+
 import { Routes, Route } from 'react-router-dom';
 import { routePaths } from './routes';
 import {
@@ -6,7 +7,8 @@ import {
   RestaurantAccount,
   RestaurantPage,
   CheckoutPage,
-  Success,
+  Success,CreateProduct,Login,
+    Register,
 } from '../../pages';
 import { MainLayout } from '../layout';
 import { useResetScroll } from '../../shared/hooks/useResetScroll';
@@ -23,6 +25,15 @@ export const AppRoutes = () => {
         <Route path={routePaths.personalAccount} element={<RestaurantAccount />}></Route>
         <Route path={routePaths.checkoutPage} element={<CheckoutPage />}></Route>
         <Route path={routePaths.success} element={<Success />}></Route>
+        <Route path={routePaths.login} element={<Login />}></Route>
+                <Route
+                    path={routePaths.register}
+                    element={<Register />}
+                ></Route>
+                <Route
+                    path={routePaths.createProduct}
+                    element={<CreateProduct />}
+                ></Route>
       </Route>
     </Routes>
   );

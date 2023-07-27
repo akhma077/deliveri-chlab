@@ -4,7 +4,9 @@ interface RoutePaths {
   basket: string;
   personalAccount: string;
   checkoutPage: string;
-  success: string;
+  success: string;    login: string;
+    register: string;
+    createProduct: string;
 }
 
 export const routePaths: RoutePaths = {
@@ -13,5 +15,8 @@ export const routePaths: RoutePaths = {
   basket: 'basket',
   personalAccount: 'personalAccount',
   checkoutPage: 'checkoutPage',
-  success: 'success',
-};
+  success: 'success',login: "login",
+    register: "register",
+    createProduct: "createProduct",
+}
+
