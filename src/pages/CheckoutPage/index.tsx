@@ -83,7 +83,7 @@ export const CheckoutPage: React.FC = () => {
             containerProps={{ className: styles.root__container__fieldFull }}
             isError={Boolean(errors.phone)}
             helperText={errors.phone?.message}
-            placeholder="Улица, Дом№"
+            placeholder="Улица, Дом №"
             {...register('phone')}
           />
           <TextField
@@ -121,7 +121,7 @@ export const CheckoutPage: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.root__container2__btn} onClick={() => navigate('/success')}>
+        <div className={styles.root__container2__btn}>
           <Button variant={ButtonVariant.Base} type="submit">
             Готово
           </Button>

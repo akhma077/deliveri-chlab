@@ -1,1 +1,2 @@
-export { ModaleOne } from "./modalOne";
+export { ModaleOne } from './modalOne';
+export { ModalMobileNavigation } from './modalMobileNavigation';

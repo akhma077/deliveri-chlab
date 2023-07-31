@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './index.module.scss';
 
-// import { ReactComponent as IconClose } from '../../../assets/img/iconClose.svg';
+import { ReactComponent as IconClose } from '../../../assets/img/X.svg';
 
 interface Props {
   title: string;
@@ -17,7 +17,9 @@ export const ModaleOne: React.FC<Props> = ({ title, description, clickNo, clickY
         <div className={styles.head}>
           <div>{title}</div>
           {/* <IconClose onClick={clickNo} /> */}
-          <div onClick={clickNo}>Icon</div>
+          <div onClick={clickNo} className={styles.iconClose}>
+            <IconClose />
+          </div>
         </div>
         <div className={styles.content}>{description}</div>
         <div className={styles.buttons}>

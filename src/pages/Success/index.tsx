@@ -4,6 +4,7 @@ import { ReactComponent as CheckMarkIcon } from '../../shared/assets/img/checkma
 
 import styles from './index.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../../widgets/Loader';
 
 export const Success: React.FC = () => {
   const navigate = useNavigate();

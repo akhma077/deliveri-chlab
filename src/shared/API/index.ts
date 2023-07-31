@@ -1,8 +1,9 @@
 export {
-    fetchCategories,
-    createProduct,
-    RegisterAPI,
-    LoginAPI,
-    getAllRestaurants,
-    getAllRestaurantProducts,
-} from "./API.service";
+  fetchCategories,
+  createProduct,
+  RegisterAPI,
+  LoginAPI,
+  getAllRestaurants,
+  getAllRestaurantProducts,
+  getUserData,
+} from './API.service';

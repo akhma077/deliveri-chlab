@@ -5,6 +5,8 @@
   justify-content: center;
   column-gap: 32px;
 
+  overflow: hidden;
+
   .customSelect {
     margin-top: 4px;
   }
@@ -85,9 +87,12 @@
 
     padding: 16px;
 
+    position: relative;
+
     &__btn {
+      bottom: 16px;
+      right: 16px;
       position: absolute;
-      bottom: 0;
 
       cursor: pointer;
     }
@@ -103,9 +108,14 @@
 
       &__btn {
         padding: 0;
+        position: fixed;
         width: 100vw;
         background: $base-color;
-        right: 0;
+        right: 0 !important;
+        bottom: 0;
+
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
 
         display: flex;
         align-items: center;
