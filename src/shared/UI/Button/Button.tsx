@@ -11,7 +11,7 @@ interface ButtonProps extends Omit<BaseProps, 'disabled'> {
   isFullWidth?: boolean;
   isLoading?: boolean;
   isDisabled?: boolean;
-  type: any;
+  type?: any;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

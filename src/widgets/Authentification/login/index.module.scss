@@ -1,70 +1,87 @@
+@import '../../../scss/variables';
+
 .form {
-    width: 600px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 120px 80px;
+  background: #ffffff;
+  border-radius: 10px;
+
+  row-gap: 12px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 12px;
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .inputPass {
+    border: 1px solid #dfdfdf;
+    border-radius: $base-border-radius;
     display: flex;
-    flex-direction: column;
-    padding: 120px 80px;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+
+    height: 45px;
+    .eyeIcon {
+      margin-right: 12px;
+      cursor: pointer;
+    }
+    input {
+      padding: 0 12px;
+      border: 0;
+      transition: 0.2s;
+      outline: 0;
+      width: 100%;
+
+      margin-right: auto;
+    }
+  }
+
+  > button {
+    cursor: pointer;
+    height: 45px;
+    margin-top: 12px;
+    border-radius: 12px;
+    transition: 0.2s;
+  }
+  > button:hover {
     background: #ffffff;
-    border-radius: 10px;
-    h2 {
-        text-align: center;
-        margin-bottom: 24px;
-        color: #000;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
+    border: 1px solid $base-color;
+    color: #000;
+  }
+  .error {
+    font-size: 14px;
+    margin-top: -12px;
+  }
+  .bott {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 24px;
+    > div {
+      cursor: pointer;
+      margin-inline-start: 6px;
+      // color: rgb(15, 143, 241);
+      color: $base-color;
+      text-decoration: underline;
     }
-    .text_field {
-        height: 45px;
-        border-radius: 8px;
-        background: #f6f8ff;
-        padding: 0 16px;
-        border: none;
-        transition: 0.2s;
-    }
-    .text_field:hover {
-        background: #eaedff;
-    }
-    .text_field:focus {
-        background: #eaedff;
-    }
-    > button {
-        cursor: pointer;
-        height: 45px;
-        margin-top: 24px;
-        border-radius: 12px;
-        border: none;
-        background: #f6f8ff;
-        transition: 0.2s;
-    }
-    > button:hover {
-        background: #eaedff;
-    }
-    .error {
-        height: 30px;
-        color: red;
-        font-size: 14px;
-        margin-inline-start: 12px;
-    }
-    .bott {
-        display: flex;
-        margin: 0 auto;
-        margin-top: 24px;
-        > div {
-            cursor: pointer;
-            margin-inline-start: 6px;
-            color: rgb(15, 143, 241);
-        }
-    }
+  }
 }
 @media (max-width: 680px) {
-    .form {
-        background: none;
-        padding: 0 40px;
-    }
+  .form {
+    background: none;
+    padding: 0 40px;
+  }
 }
 @media (max-width: 460px) {
-    .form {
-        background: none;
-        padding: 0 20px;
-    }
+  .form {
+    background: none;
+    padding: 0 20px;
+  }
 }

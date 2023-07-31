@@ -1,7 +1,6 @@
 export enum ButtonVariant {
   AddProd,
   Black,
-  Clear,
   Base,
   SignInHeader,
 }
