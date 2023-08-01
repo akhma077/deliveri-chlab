@@ -10,6 +10,9 @@ import classNames from 'classnames';
 import styles from './index.module.scss';
 import { RadioButton } from '../../shared/UI/RadioButton/RadioButton';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectBasket } from '../../shared/config';
+import { Product } from '../../entities';
 
 const schema = yup.object().shape({
   name: yup.string().required('Это обязательное поле'),
@@ -19,6 +22,17 @@ const schema = yup.object().shape({
 
 export const CheckoutPage: React.FC = () => {
   const [isClearable, setIsClearable] = React.useState(true);
+
+  const { basket } = useSelector(selectBasket);
+
+  const funcReturnBasketCount = () => {
+    let summ = 0;
+    basket.map((ars: Product[]) => {
+      ars.map((item) => (summ += item.price));
+    });
+
+    return summ;
+  };
 
   const [selectedOption, setSelectedOption] = React.useState<string>('option1');
 
@@ -96,7 +110,7 @@ export const CheckoutPage: React.FC = () => {
 
       <div className={styles.root__container2}>
         <h2 className={styles.root__totalPrice}>
-          Итого: <span> 666₽</span>
+          Итого: <span> {funcReturnBasketCount()}₽</span>
         </h2>
 
         <h2 className={styles.root__paymentTitle}>Оплата: </h2>

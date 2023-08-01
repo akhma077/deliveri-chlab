@@ -1,9 +1,8 @@
 .content {
   width: 900px;
-
+  position: relative;
   &__categories {
     display: none;
-    position: sticky;
 
     @media (max-width: 1024px) {
       display: block;
@@ -38,5 +37,22 @@
     position: absolute;
 
     width: 100vw;
+  }
+}
+.fixed {
+  @media (max-width: 1024px) {
+    position: sticky;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    background-color: white;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    padding: 5px 10px 0px 10px;
   }
 }

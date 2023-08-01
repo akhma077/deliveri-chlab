@@ -40,7 +40,7 @@ export const RestaurantPage: React.FC = () => {
         {data ? (
           <>
             {data?.length > 0 ? (
-              <RestarauntContent data={data} categoriesData={data} />
+              <RestarauntContent data={data} />
             ) : (
               <div
                 style={{
