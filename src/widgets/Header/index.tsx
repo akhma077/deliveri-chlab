@@ -14,6 +14,7 @@ import { Product } from '../../entities';
 import { useQuery } from 'react-query';
 import { getUserData } from '../../shared/API';
 import { ModalMobileNavigation } from '../../shared/UI';
+import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -46,8 +47,30 @@ export const Header: React.FC = () => {
   const handleCloseModal = () => {
     setIsOpen(!isOpen);
   };
+  const [isHeaderFixed, setIsHeaderFixed] = React.useState(true);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const screenWidth = window.screen.width;
+
+    if (screenWidth <= 1024) {
+      setIsHeaderFixed(scrollPosition <= 300);
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={style.header}>
+    <header
+      className={classNames(style.header, {
+        [style.headerFixed]: isHeaderFixed,
+      })}
+    >
       <Link to="/">
         <div className={style.header__logo}>
           <LogoIcon />
