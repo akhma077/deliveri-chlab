@@ -47,14 +47,15 @@ export const Header: React.FC = () => {
   const handleCloseModal = () => {
     setIsOpen(!isOpen);
   };
-  const [isHeaderFixed, setIsHeaderFixed] = React.useState(true);
+  const [isHeaderFixed, setIsHeaderFixed] = React.useState(false);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    const screenWidth = window.screen.width;
 
-    if (screenWidth <= 1024) {
-      setIsHeaderFixed(scrollPosition <= 300);
+    if (scrollPosition >= 440) {
+      setIsHeaderFixed(true);
+    } else {
+      setIsHeaderFixed(false);
     }
   };
 
@@ -63,7 +64,7 @@ export const Header: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isHeaderFixed]);
 
   return (
     <header

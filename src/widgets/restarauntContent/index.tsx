@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import { RestarauntHeader } from './../RestarauntHeader';
 import { RestaurantContent } from '../../features';
 import { Categories } from '..';
 
-import { Link } from 'react-scroll';
 import classNames from 'classnames';
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 }
 
 export const RestarauntContent: React.FC<Props> = ({ data }) => {
-  const [isCategoriesBlockFixed, setCategoriesBlockFixed] = useState(false);
+  const [isCategoriesBlockFixed, setCategoriesBlockFixed] = React.useState(false);
 
   const targetBlockRef = React.useRef<any>(null);
 
@@ -54,6 +53,3 @@ export const RestarauntContent: React.FC<Props> = ({ data }) => {
     </div>
   );
 };
-function toUpperCase(имя: any, переменной: any): any {
-  throw new Error('Function not implemented.');
-}
