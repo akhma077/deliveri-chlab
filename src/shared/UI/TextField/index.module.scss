@@ -1,18 +1,17 @@
-@import '../../../scss/_variables.scss';
+@import "../../../scss/_variables.scss";
 
 .root {
-  width: 100%;
-  padding: 12px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $neutral-color;
+    border-radius: $base-border-radius;
 
-  border: 1px solid $neutral-color;
-  border-radius: $base-border-radius;
+    margin-top: 4px;
 
-  margin-top: 4px;
-
-  @media (max-width: 576px) {
-    height: 40px;
-  }
+    @media (max-width: 576px) {
+        height: 40px;
+    }
 }
 .root::placeholder {
-  font-size: 14px;
+    font-size: 14px;
 }

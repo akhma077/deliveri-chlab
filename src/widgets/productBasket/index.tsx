@@ -1,44 +1,45 @@
-import * as React from 'react';
-import styles from './index.module.scss';
-import { BasketContent, BasketHead, BasketSumm } from '../../features';
-import { ModaleOne } from '../../shared';
-import { useSelector } from 'react-redux';
-import { selectBasket } from '../../shared/config';
-import { Product } from '../../entities';
-import { useNavigate } from 'react-router';
+
+import * as React from "react";
+import styles from "./index.module.scss";
+import { BasketContent, BasketHead } from "../../features";
+import { ModaleOne } from "../../shared";
+import { useSelector } from "react-redux";
+import { selectBasket } from "../../shared/config";
+import { Product } from "../../entities";
+import { useNavigate } from "react-router-dom";
 
 export const ProductBasket = ({}) => {
-  const [modalActive, setModalActive] = React.useState<boolean>(false);
-  const { basket } = useSelector(selectBasket);
+    const [modalActive, setModalActive] = React.useState<boolean>(false);
+    const { basket } = useSelector(selectBasket);
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
-  const funcReturnBasketSumm = () => {
-    let summ = 0;
-    basket.map((ars: Product[]) => {
-      ars.map((item) => (summ += item.price));
-    });
-    return summ;
-  };
-  return (
-    <>
-      <div className={styles.basket}>
-        {modalActive && (
-          <ModaleOne
-            title={'Вы уверены?'}
-            description="Вы  точно хотите очистить все?"
-            clickNo={() => setModalActive(false)}
-            clickYes={() => console.log()}
-          />
-        )}
-        <BasketHead />
-        <BasketContent onlyScroll />
-        <div className={styles.basket_summ}>
-          <button onClick={() => navigate('/checkoutPage')}>
-            {funcReturnBasketSumm()}₽ - Оплатить
-          </button>
-        </div>
-      </div>
-    </>
-  );
+    const funcReturnBasketSumm = () => {
+        let summ = 0;
+        basket.map((ars: Product[]) => {
+            ars.map((item) => (summ += item.price));
+        });
+        return summ;
+    };
+    return (
+        <>
+            <div className={styles.basket}>
+                {modalActive && (
+                    <ModaleOne
+                        title={"Вы уверены?"}
+                        description="Вы  точно хотите очистить все?"
+                        clickNo={() => setModalActive(false)}
+                        clickYes={() => console.log()}
+                    />
+                )}
+                <BasketHead />
+                <BasketContent onlyScroll />
+                <div
+                    className={styles.basket_summ}
+                    onClick={() => navigate("/checkoutPage")}
+                >
+                    <button>{funcReturnBasketSumm()}₽ - Оплатить</button>
+                </div>
+            </div>
+        </>
+    );
 };
