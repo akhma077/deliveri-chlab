@@ -56,9 +56,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .iconDelete {
+      width: 15px !important;
+      height: 15px;
+    }
+
+    svg {
+      width: 12px;
+      height: 15px;
+    }
+
+    svg path {
+      stroke: black;
+    }
     .count_btn {
-      width: 24px;
-      height: 24px;
+      width: 15px;
+      height: 20px;
       transition: 0.2s;
       cursor: pointer;
       border-radius: 5px;

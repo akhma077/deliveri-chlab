@@ -65,6 +65,7 @@ export const RegisterForm = () => {
       </div>
 
       <div className={styles.inputPass}>
+        {' '}
         <TextField
           // className={styles.text_field}
           placeholder="Введите ваш пароль"

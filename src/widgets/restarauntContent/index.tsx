@@ -4,23 +4,46 @@ import { RestarauntHeader } from './../RestarauntHeader';
 import { RestaurantContent } from '../../features';
 import { Categories } from '..';
 
+import classNames from 'classnames';
+
 interface Props {
   data: any;
-  categoriesData: any;
 }
 
-export const RestarauntContent: React.FC<Props> = ({ data, categoriesData }) => {
+export const RestarauntContent: React.FC<Props> = ({ data }) => {
+  const [isCategoriesBlockFixed, setCategoriesBlockFixed] = React.useState(false);
+
+  const targetBlockRef = React.useRef<any>(null);
+
+  const handleScroll = () => {
+    const targetBlockOffsetTop = targetBlockRef.current?.offsetTop || 0;
+    setCategoriesBlockFixed(window.scrollY >= targetBlockOffsetTop);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <div className={styles.content}>
       <RestarauntHeader />
       <div className={styles.restaurantContent}>
-        <div className={styles.content__categories}>
-          <Categories data={categoriesData} />
+        <div
+          className={classNames(styles.content__categories, {
+            [styles.fixed]: isCategoriesBlockFixed,
+          })}
+          ref={targetBlockRef}
+        >
+          <Categories data={data} />
         </div>
         {data?.length > 0 ? (
           <>
-            {data.map((item: any) => (
-              <RestaurantContent title={item.name} titleId={item.id} data={item.products} />
+            {data.map((item: any, index: number) => (
+              <div key={item.id} id={`category-container-${index}`}>
+                <RestaurantContent title={item.name} titleId={item.id} data={item.products} />
+              </div>
             ))}
           </>
         ) : (

@@ -18,7 +18,7 @@ export const ModalMobileNavigation: React.FC<BaseProps> = ({ isOpen, handleClose
       onClick={handleCloseModal}
     >
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <NavLink to={'/login'}>
+        <NavLink to={'/login'} onClick={handleCloseModal}>
           <p>Войти</p>
         </NavLink>
       </div>

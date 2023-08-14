@@ -37,6 +37,7 @@ export const RestaurantPage: React.FC = () => {
                     </div>
                 </div>
 
+
                 {data ? (
                     <>
                         {data?.length > 0 ? (
@@ -83,6 +84,7 @@ export const RestaurantPage: React.FC = () => {
                     onClick={() => navigate("/basket")}
                 />
             </div>
+
         </div>
     );
 };

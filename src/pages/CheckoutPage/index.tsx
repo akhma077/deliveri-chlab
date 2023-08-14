@@ -7,11 +7,13 @@ import { Button, ButtonVariant } from "../../shared/UI/Button";
 import Select from "react-select";
 import classNames from "classnames";
 
-import styles from "./index.module.scss";
-import { RadioButton } from "../../shared/UI/RadioButton/RadioButton";
-import { useSelector } from "react-redux";
-import { selectBasket } from "../../shared/config";
-import { Product } from "../../entities";
+import styles from './index.module.scss';
+import { RadioButton } from '../../shared/UI/RadioButton/RadioButton';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectBasket } from '../../shared/config';
+import { Product } from '../../entities';
+
 
 const schema = yup.object().shape({
     name: yup.string().required("Это обязательное поле"),
@@ -23,8 +25,10 @@ export const CheckoutPage: React.FC = () => {
     const { basket } = useSelector(selectBasket);
     const [isClearable, setIsClearable] = React.useState(true);
 
+
     const [selectedOption, setSelectedOption] =
         React.useState<string>("option1");
+
 
     const handleRadioChange = (value: string) => {
         setSelectedOption(value);
@@ -114,10 +118,12 @@ export const CheckoutPage: React.FC = () => {
                 </div>
             </div>
 
+
             <div className={styles.root__container2}>
                 <h2 className={styles.root__totalPrice}>
                     Итого: <span>{funcReturnBasketSumm()} ₽</span>
                 </h2>
+
 
                 <h2 className={styles.root__paymentTitle}>Оплата: </h2>
                 <div className={styles.root__section}>
