@@ -1,8 +1,10 @@
 .root {
-  svg {
-    @media (max-width: 576px) {
-      width: 140px;
-      height: auto;
+    svg {
+        width: 220px;
+        height: 390px;
+        @media (max-width: 576px) {
+            width: 140px;
+            height: 265px;
+        }
     }
-  }
 }

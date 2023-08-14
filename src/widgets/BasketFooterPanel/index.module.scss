@@ -20,8 +20,8 @@
     .summ {
         height: 40px;
         border-radius: 20px;
-        background: rgba($color: #bebebe, $alpha: 0.2);
-
+        background: #6943ba;
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,11 +35,12 @@
         width: 150px;
         height: 40px;
         border-radius: 20px;
-        background: rgba($color: #bebebe, $alpha: 0.2);
+        background: #6943ba;
+        color: white;
         border: none;
     }
     &__btn:hover {
-        background: rgba($color: #bebebe, $alpha: 0.5);
+        background: #4911c1;
     }
 }
 @media (max-width: 900px) {

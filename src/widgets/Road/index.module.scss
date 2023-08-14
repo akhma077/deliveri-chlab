@@ -4,65 +4,67 @@ $lineWidth: 100%;
 $lineGap: 10px;
 
 .road {
-  position: relative;
-  width: 100%;
-  height: 7px;
-  background-color: #b4b4b4;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 7px;
+    background-color: #b4b4b4;
+    overflow: hidden;
 
-  top: -135px;
+    top: -135px;
 
-  @media (max-width: 576px) {
-    top: -95px;
-  }
+    @media (max-width: 576px) {
+        top: -95px;
+    }
 }
 
 .lines {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: $lineWidth;
-  height: $lineHeight;
-  display: flex;
-  justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $lineWidth;
+    height: $lineHeight;
+    display: flex;
+    justify-content: space-between;
 }
 
 .line + .line {
-  margin-left: $lineGap;
+    margin-left: $lineGap;
 }
 
 .bike {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 70px;
-  height: 10px;
-  background-color: rgb(27, 26, 26);
-  z-index: 1;
-
-  transition: transform 0.2s linear;
-  animation: moveBikeX 500ms linear infinite;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 10px;
+    background-color: rgb(27, 26, 26);
+    z-index: 1;
+    transition: transform 0.2s linear;
+    animation: moveBikeX 800ms linear infinite;
+    margin-left: 200px;
 }
 .bike1 {
-  //   animation-delay: -3.5s; // Добавляем задержку для второй линии
-  margin-left: -100px;
+}
+.bike2 {
+    animation-delay: 400ms;
 }
 
 @keyframes moveBikeX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(400%);
-  }
-}
-@media (max-width: 576px) {
-  @keyframes moveBikeX {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     100% {
-      transform: translateX(300%);
+        transform: translateX(-350%);
     }
-  }
+}
+
+@media (max-width: 576px) {
+    @keyframes moveBikeX {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-350%);
+        }
+    }
 }
