@@ -1,58 +1,59 @@
 .content {
-  width: 900px;
-  position: relative;
-  &__categories {
-    display: none;
+    width: 900px;
+    position: relative;
+    &__categories {
+        display: none;
 
-    @media (max-width: 1024px) {
-      display: block;
+        @media (max-width: 1024px) {
+            display: block;
+        }
     }
-  }
 }
 @media (max-width: 1600px) {
-  .content {
-    width: 740px;
-  }
+    .content {
+        width: 740px;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  .content {
-    width: 580px;
-  }
+    .content {
+        width: 580px;
+    }
 }
 @media (max-width: 576px) {
-  .content {
-    width: 100vw;
-  }
+    .content {
+        width: 100vw;
+    }
 
-  .restaurantContent {
-    // background: red;
+    .restaurantContent {
+        // background: red;
 
-    background: white;
+        background: white;
 
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
 
-    margin-top: -20px;
-    position: absolute;
+        margin-top: -20px;
+        position: absolute;
 
-    width: 100vw;
-  }
+        width: 100vw;
+    }
 }
 .fixed {
-  @media (max-width: 1024px) {
-    position: sticky;
-    top: 0px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
+    @media (max-width: 1024px) {
+        position: sticky;
+        top: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
 
-    backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
 
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
 
-    padding: 5px 10px 0px 10px;
-  }
+        padding: 5px 10px 0px 10px;
+    }
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import styles from "./index.module.scss";
 import { Product } from "..";
+import { image_api } from "../../shared";
 
 interface Props {
     fullCard?: boolean;
@@ -22,7 +23,7 @@ export const BasketCard: React.FC<Props> = ({
             <div className={styles.cont}>
                 <div className={styles.info}>
                     <img
-                        src={`https://95.163.235.15/${product.image}`}
+                        src={`${image_api}/${product.image}`}
                         alt={product.name}
                     />
                     <div className={styles.content}>

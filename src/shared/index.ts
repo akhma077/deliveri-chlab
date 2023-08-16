@@ -7,4 +7,5 @@ export {
     LoginAPI,
     getAllRestaurants,
     getAllRestaurantProducts,
+    image_api,
 } from "./API";

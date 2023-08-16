@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./index.module.scss";
 import { Link } from "react-router-dom";
+import { image_api } from "../../shared";
 
 interface Props {
     data: any;
@@ -15,7 +16,7 @@ export const RestarauntBlock: React.FC<Props> = ({ data }) => {
                     <div
                         className={styles.root__bg_image}
                         style={{
-                            backgroundImage: `url(https://95.163.235.15/${obj.image})`,
+                            backgroundImage: `url(${image_api}/${obj.image})`,
                         }}
                     >
                         <div className={styles.root__delivery_time_block}>
