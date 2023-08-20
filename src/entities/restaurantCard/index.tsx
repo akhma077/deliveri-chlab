@@ -5,7 +5,7 @@ import styles from "./index.module.scss";
 import { ReactComponent as IconAdd } from "../../shared/assets/img/PlusF.svg";
 import { ReactComponent as IconDelete } from "../../shared/assets/img/MinusF.svg";
 import classNames from "classnames";
-import { image_api } from "../../shared";
+import { CardButton, image_api } from "../../shared";
 
 interface Props {
     product: Product;
@@ -37,19 +37,16 @@ export const RestaurantCard: React.FC<Props> = ({
                 </div>
             ) : (
                 <div className={styles.card_count}>
-                    <IconDelete
+                    <CardButton
                         onClick={() => deleteToBasket(product, productCount)}
-                        className={classNames(
-                            styles.count_btn,
-                            styles.iconDelete
-                        )}
-                    />
+                    >
+                        -
+                    </CardButton>
                     <div className={styles.counter}>{productCount}</div>
 
-                    <IconAdd
-                        onClick={() => addToBasket(product, 1)}
-                        className={styles.count_btn}
-                    />
+                    <CardButton onClick={() => addToBasket(product, 1)}>
+                        +
+                    </CardButton>
                 </div>
             )}
         </div>

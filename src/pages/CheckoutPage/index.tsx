@@ -7,13 +7,9 @@ import { Button, ButtonVariant } from "../../shared/UI/Button";
 import Select from "react-select";
 import classNames from "classnames";
 
-import styles from './index.module.scss';
-import { RadioButton } from '../../shared/UI/RadioButton/RadioButton';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectBasket } from '../../shared/config';
-import { Product } from '../../entities';
-
+import styles from "./index.module.scss";
+import { RadioButton } from "../../shared/UI/RadioButton/RadioButton";
+import { useBasketData } from "../../shared";
 
 const schema = yup.object().shape({
     name: yup.string().required("Это обязательное поле"),
@@ -22,13 +18,11 @@ const schema = yup.object().shape({
 });
 
 export const CheckoutPage: React.FC = () => {
-    const { basket } = useSelector(selectBasket);
+    const { summ } = useBasketData();
     const [isClearable, setIsClearable] = React.useState(true);
-
 
     const [selectedOption, setSelectedOption] =
         React.useState<string>("option1");
-
 
     const handleRadioChange = (value: string) => {
         setSelectedOption(value);
@@ -46,21 +40,12 @@ export const CheckoutPage: React.FC = () => {
         console.log(data);
     };
 
-    console.log(errors);
-
     const colourOptions = [
         { value: "altievo", label: "Альтиево" },
         { value: "nazran", label: "Назрань" },
         { value: "magas", label: "Магас" },
     ];
 
-    const funcReturnBasketSumm = () => {
-        let summ = 0;
-        basket.map((ars: Product[]) => {
-            ars.map((item) => (summ += item.price));
-        });
-        return summ;
-    };
     return (
         <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.root__container}>
@@ -118,12 +103,10 @@ export const CheckoutPage: React.FC = () => {
                 </div>
             </div>
 
-
             <div className={styles.root__container2}>
                 <h2 className={styles.root__totalPrice}>
-                    Итого: <span>{funcReturnBasketSumm()} ₽</span>
+                    Итого: <span>{summ} ₽</span>
                 </h2>
-
 
                 <h2 className={styles.root__paymentTitle}>Оплата: </h2>
                 <div className={styles.root__section}>

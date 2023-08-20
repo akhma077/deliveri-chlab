@@ -6,37 +6,25 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Product } from "../../entities";
 import { useSelector } from "react-redux";
 import { selectBasket } from "../../shared/config";
-import { getAllRestaurantProducts } from "../../shared";
+import { getAllRestaurantProducts, useBasketData } from "../../shared";
 import { useQuery } from "react-query";
 import { Loader } from "../../widgets/Loader";
 
 export const RestaurantPage: React.FC = () => {
-    const { basket } = useSelector(selectBasket);
+    const { count } = useBasketData();
     const { id } = useParams();
     const { data } = useQuery(["products", id], getAllRestaurantProducts);
 
     const navigate = useNavigate();
 
     // Количество этих продуктов в корзине
-    const funcReturnBasketCount = () => {
-        let count = 0;
-        basket.map((ars: Product[]) => {
-            count += ars.length;
-        });
-        return count;
-    };
-
-    console.log(data);
 
     return (
         <div className={styles.page}>
             <div>
-                <div className={styles.categories_plug}>
-                    <div className={styles.categories}>
-                        <Categories data={data} />
-                    </div>
+                <div className={styles.categories}>
+                    <Categories data={data} />
                 </div>
-
                 {data ? (
                     <>
                         {data?.length > 0 ? (
@@ -68,17 +56,12 @@ export const RestaurantPage: React.FC = () => {
                         <Loader />
                     </div>
                 )}
-                <div className={styles.basket_plug}>
-                    <div className={styles.basket}>
-                        <ProductBasket />
-                    </div>
+                <div className={styles.basket}>
+                    <ProductBasket />
                 </div>
             </div>
             <div className={styles.basketSum}>
-                <BasketSumm
-                    count={funcReturnBasketCount()}
-                    onClick={() => navigate("/basket")}
-                />
+                <BasketSumm count={count} onClick={() => navigate("/basket")} />
             </div>
         </div>
     );

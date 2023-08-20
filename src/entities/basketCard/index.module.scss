@@ -10,11 +10,11 @@
             font-size: 16px !important;
         }
     }
+
     width: 100%;
     display: flex;
     justify-content: space-between;
     animation: anCard 0.3s;
-    margin-bottom: 10px;
     border-radius: 20px;
     background: white;
     padding-right: 4px;
@@ -46,15 +46,23 @@
             border-radius: 20px;
         }
         .content {
-            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             margin-inline-start: 8px;
+            .content_name {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-height: 40px;
+            }
             .content_price {
                 color: black;
                 margin-top: 4px;
                 font-size: 14px;
+                font-weight: 500;
             }
         }
         .counter {
