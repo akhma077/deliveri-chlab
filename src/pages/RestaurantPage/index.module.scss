@@ -1,104 +1,50 @@
 .page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  > div {
     display: flex;
-    justify-content: space-between;
-
-    > .basket {
-      margin-inline-start: 30px;
+    flex-direction: column;
+    align-items: center;
+    > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
     }
-  }
-
-  .categories {
-    width: 220px;
-    position: fixed;
-  }
-  .categories_plug {
-    width: 320px;
-  }
-
-  .content {
-    width: 900px;
-  }
-  .basket {
-    width: 270px;
-    margin-top: 20px;
-    position: fixed;
-    height: 100%;
-  }
-  .basket_plug {
-    width: 300px;
-    margin-inline-start: 30px;
-  }
-
-  @media (max-width: 1400px) {
-    .categories_plug {
-      width: 290px;
+    .content {
+        width: 900px;
     }
-  }
-
-  @media (max-width: 1300px) {
-    .categories_plug {
-      width: 290px;
+    .categories {
+        position: sticky;
+        top: 130px;
+        height: 100%;
     }
-    .basket_plug {
-      display: none;
+    .basket {
+        width: 270px;
+        margin-top: 20px;
+        height: 100%;
+        position: sticky;
+        top: 130px;
     }
-  }
-  @media (max-width: 1200px) {
-    .basket_plug {
-      width: 120px;
-    }
-  }
-  @media (max-width: 1100px) {
-    .basket_plug {
-      width: 90px;
-    }
-  }
 }
 
 @media (max-width: 1300px) {
-  .page {
-    align-items: initial;
-    padding-right: 100px;
-  }
-}
-@media (max-width: 1100px) {
-  .page {
-    align-items: initial;
-    padding-right: 30px;
-  }
+    .basket {
+        display: none;
+    }
 }
 @media (max-width: 1024px) {
-  .page {
-    align-items: center;
-    padding-right: 0;
-
-    .categories_plug {
-      display: none;
+    .categories {
+        display: none;
     }
-  }
-}
-@media (max-width: 576px) {
-  .page {
-    div {
-      justify-content: space-around;
-    }
-  }
 }
 .basketSum {
-  position: fixed;
-  bottom: 20px;
-  left: 90%;
-  z-index: 999;
-  display: none !important;
+    position: fixed;
+    bottom: 20px;
+    left: 90%;
+    z-index: 999;
+    display: none !important;
 
-  @media (max-width: 576px) {
-    display: block !important;
-  }
-  @media (max-width: 576px) {
-    left: 80%;
-  }
+    @media (max-width: 576px) {
+        display: block !important;
+    }
+    @media (max-width: 576px) {
+        left: 80%;
+    }
 }

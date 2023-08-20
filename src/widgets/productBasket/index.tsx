@@ -1,25 +1,14 @@
-
 import * as React from "react";
 import styles from "./index.module.scss";
 import { BasketContent, BasketHead } from "../../features";
-import { ModaleOne } from "../../shared";
-import { useSelector } from "react-redux";
-import { selectBasket } from "../../shared/config";
-import { Product } from "../../entities";
+import { ModaleOne, useBasketData } from "../../shared";
 import { useNavigate } from "react-router-dom";
 
 export const ProductBasket = ({}) => {
-    const [modalActive, setModalActive] = React.useState<boolean>(false);
-    const { basket } = useSelector(selectBasket);
     const navigate = useNavigate();
+    const { summ } = useBasketData();
+    const [modalActive, setModalActive] = React.useState<boolean>(false);
 
-    const funcReturnBasketSumm = () => {
-        let summ = 0;
-        basket.map((ars: Product[]) => {
-            ars.map((item) => (summ += item.price));
-        });
-        return summ;
-    };
     return (
         <>
             <div className={styles.basket}>
@@ -37,7 +26,7 @@ export const ProductBasket = ({}) => {
                     className={styles.basket_summ}
                     onClick={() => navigate("/checkoutPage")}
                 >
-                    <button>{funcReturnBasketSumm()}₽ - Оплатить</button>
+                    <button>{summ}₽ - Оплатить</button>
                 </div>
             </div>
         </>
