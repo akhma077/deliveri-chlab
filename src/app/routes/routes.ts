@@ -4,9 +4,12 @@ interface RoutePaths {
   basket: string;
   personalAccount: string;
   checkoutPage: string;
-  success: string;    login: string;
-    register: string;
-    createProduct: string;
+  success: string;
+  login: string;
+  register: string;
+  createProduct: string;
+  restarauntAccaunt: string;
+  restarauntAccauntEdit: string;
 }
 
 export const routePaths: RoutePaths = {
@@ -15,8 +18,10 @@ export const routePaths: RoutePaths = {
   basket: 'basket',
   personalAccount: 'personalAccount',
   checkoutPage: 'checkoutPage',
-  success: 'success',login: "login",
-    register: "register",
-    createProduct: "createProduct",
-}
-
+  success: 'success',
+  login: 'login',
+  register: 'register',
+  createProduct: 'createProduct',
+  restarauntAccaunt: 'restarauntAccaunt/:id',
+  restarauntAccauntEdit: 'restarauntAccauntEdit',
+};

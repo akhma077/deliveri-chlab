@@ -30,8 +30,6 @@ export const RegisterForm = () => {
       ...prevInputStates,
       [inputId]: !prevInputStates[inputId],
     }));
-
-    console.log('isShowPass', isShowPass);
   }
 
   const onSubmit = async (data: any) => {

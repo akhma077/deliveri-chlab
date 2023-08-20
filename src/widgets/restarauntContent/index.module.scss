@@ -1,6 +1,7 @@
 .content {
   width: 900px;
   position: relative;
+
   &__categories {
     display: none;
 
@@ -26,8 +27,6 @@
   }
 
   .restaurantContent {
-    // background: red;
-
     background: white;
 
     border-top-left-radius: 25px;
@@ -42,17 +41,20 @@
 .fixed {
   @media (max-width: 1024px) {
     position: sticky;
-    top: 0px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 999;
 
-    backdrop-filter: blur(20px);
+    height: 100px;
 
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    padding-top: 1px;
 
-    padding: 5px 10px 0px 10px;
+    // backdrop-filter: blur(20px);
+    background-color: white;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
 }

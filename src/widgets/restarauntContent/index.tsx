@@ -17,6 +17,7 @@ export const RestarauntContent: React.FC<Props> = ({ data }) => {
 
   const handleScroll = () => {
     const targetBlockOffsetTop = targetBlockRef.current?.offsetTop || 0;
+
     setCategoriesBlockFixed(window.scrollY >= targetBlockOffsetTop);
   };
 
@@ -29,14 +30,15 @@ export const RestarauntContent: React.FC<Props> = ({ data }) => {
   return (
     <div className={styles.content}>
       <RestarauntHeader />
-      <div className={styles.restaurantContent}>
+      <div className={styles.restaurantContent} ref={targetBlockRef}>
         <div
           className={classNames(styles.content__categories, {
             [styles.fixed]: isCategoriesBlockFixed,
           })}
-          ref={targetBlockRef}
         >
-          <Categories data={data} />
+          <div>
+            <Categories data={data} />
+          </div>
         </div>
         {data?.length > 0 ? (
           <>

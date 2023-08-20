@@ -58,7 +58,7 @@
   }
 
   @media (max-width: 576px) {
-    margin: 25px 25px 25px 0px !important;
+    margin: 25px 25px 25px 25px !important;
 
     &__list {
       width: 400px;
@@ -66,11 +66,9 @@
 
       li {
         border-radius: 20px;
-        margin: 0px 0px 0px 0px !important;
 
         &.active {
-          // background-color: darken(#f6f6f6, 0.5%);
-          background: white;
+          background-color: darken(#f6f6f6, 1%);
           margin-left: 0 !important;
           margin-right: 0px;
         }

@@ -6,4 +6,5 @@ export {
   getAllRestaurants,
   getAllRestaurantProducts,
   getUserData,
+  deleteProduct,
 } from './API.service';

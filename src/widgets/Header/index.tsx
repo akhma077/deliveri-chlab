@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as BasketHeaderIcon } from '../../shared/assets/img/BasketHEaderIcon.svg';
 import { ReactComponent as LogoIcon } from '../../shared/assets/img/headerLogo2.svg';
@@ -43,14 +43,12 @@ export const Header: React.FC = () => {
   const count = funcReturnBasketCount();
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const handleCloseModal = () => {
-    setIsOpen(!isOpen);
-  };
   const [isHeaderFixed, setIsHeaderFixed] = React.useState(false);
 
   const handleScroll = () => {
-    const scrollPosition = window.scrollY;
+    let scrollPosition = window.scrollY;
 
     if (scrollPosition >= 440) {
       setIsHeaderFixed(true);
@@ -59,12 +57,22 @@ export const Header: React.FC = () => {
     }
   };
 
+  const openModal = () => {
+    setIsOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    document.body.style.overflow = '';
+  };
+
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHeaderFixed]);
+  }, []);
 
   return (
     <header
@@ -92,8 +100,10 @@ export const Header: React.FC = () => {
               ''
             )}
             {data ? (
-              <div className={style.header__avatar}>
-                {/* <span>{data.email[0].toUpperCase()}</span>{' '} */}
+              <div
+                className={style.header__avatar}
+                onClick={() => navigate(`/restarauntAccaunt/${id}`)}
+              >
                 <UserLogoIcon />
               </div>
             ) : (
@@ -103,13 +113,19 @@ export const Header: React.FC = () => {
                 </Button>
               </div>
             )}
-            <div className={style.header__burgerMenu} onClick={handleCloseModal}>
+            <div className={style.header__burgerMenu} onClick={openModal}>
               <BurgerMenuIcon />
             </div>
 
-            {isOpen && (
-              <ModalMobileNavigation isOpen={isOpen} handleCloseModal={handleCloseModal} />
-            )}
+            <div className={style.header__isOpen}>
+              {isOpen && (
+                <ModalMobileNavigation
+                  isOpen={isOpen}
+                  handleCloseModal={closeModal}
+                  handleOpenModal={openModal}
+                />
+              )}
+            </div>
           </>
         )}
       </section>
