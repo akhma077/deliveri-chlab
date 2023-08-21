@@ -3,9 +3,6 @@ import styles from "./index.module.scss";
 import { Categories, ProductBasket, RestarauntContent } from "../../widgets";
 import { BasketSumm } from "../../features";
 import { useNavigate, useParams } from "react-router-dom";
-import { Product } from "../../entities";
-import { useSelector } from "react-redux";
-import { selectBasket } from "../../shared/config";
 import { getAllRestaurantProducts, useBasketData } from "../../shared";
 import { useQuery } from "react-query";
 import { Loader } from "../../widgets/Loader";
@@ -14,7 +11,8 @@ export const RestaurantPage: React.FC = () => {
     const { count } = useBasketData();
     const { id } = useParams();
     const { data } = useQuery(["products", id], getAllRestaurantProducts);
-  const navigate = useNavigate();
+
+    const navigate = useNavigate();
 
     return (
         <div className={styles.page}>
@@ -61,10 +59,5 @@ export const RestaurantPage: React.FC = () => {
                 <BasketSumm count={count} onClick={() => navigate("/basket")} />
             </div>
         </div>
-      </div>
-      <div className={styles.basketSum}>
-        <BasketSumm count={funcReturnBasketCount()} onClick={() => navigate('/basket')} />
-      </div>
-    </div>
-  );
+    );
 };
