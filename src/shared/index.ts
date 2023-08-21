@@ -1,3 +1,4 @@
+
 export { ModaleOne, LoaderUsual } from './UI';
 export { isDefined } from './utils/isDefined';
 export {
@@ -7,5 +8,7 @@ export {
   LoginAPI,
   getAllRestaurants,
   getAllRestaurantProducts,
-  deleteProduct,
+  deleteProduct,image_api,
 } from './API';
+export { useEmailConfirmed, useBasketData } from "./hooks";
+

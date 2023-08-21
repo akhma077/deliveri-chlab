@@ -1,4 +1,5 @@
 export {
+
   fetchCategories,
   createProduct,
   RegisterAPI,
@@ -8,3 +9,6 @@ export {
   getUserData,
   deleteProduct,
 } from './API.service';
+
+export { image_api } from "./config.json";
+

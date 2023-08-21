@@ -1,13 +1,15 @@
 import * as React from 'react';
-
-import styles from './index.module.scss';
-import { RestarauntBlock } from '../../widgets';
-import { useQuery } from 'react-query';
-import { getAllRestaurants } from '../../shared/API/API.service';
-import { Loader } from '../../widgets/Loader';
+import styles from "./index.module.scss";
+import { RestarauntBlock } from "../../widgets";
+import { useQuery } from "react-query";
+import { getAllRestaurants } from "../../shared/API/API.service";
+import { Loader } from "../../widgets/Loader";
+import { useEmailConfirmed } from "../../shared";
 
 export const Restaurant: React.FC = () => {
-  const { data } = useQuery('restaurants', getAllRestaurants);
+    const { data } = useQuery("restaurants", getAllRestaurants);
+    const { emailConfirmed } = useEmailConfirmed();
+    console.log(emailConfirmed);
 
   return (
     <main className={styles.main}>
