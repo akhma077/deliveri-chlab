@@ -14,10 +14,7 @@ export const RestaurantPage: React.FC = () => {
     const { count } = useBasketData();
     const { id } = useParams();
     const { data } = useQuery(["products", id], getAllRestaurantProducts);
-
-    const navigate = useNavigate();
-
-    // Количество этих продуктов в корзине
+  const navigate = useNavigate();
 
     return (
         <div className={styles.page}>
@@ -64,5 +61,10 @@ export const RestaurantPage: React.FC = () => {
                 <BasketSumm count={count} onClick={() => navigate("/basket")} />
             </div>
         </div>
-    );
+      </div>
+      <div className={styles.basketSum}>
+        <BasketSumm count={funcReturnBasketCount()} onClick={() => navigate('/basket')} />
+      </div>
+    </div>
+  );
 };

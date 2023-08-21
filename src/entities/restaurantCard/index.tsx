@@ -20,6 +20,7 @@ export const RestaurantCard: React.FC<Props> = ({
     addToBasket,
     deleteToBasket,
 }) => {
+
     return (
         <div className={styles.card}>
             <img src={`${image_api}/${product.image}`} alt={product.name} />
@@ -28,7 +29,6 @@ export const RestaurantCard: React.FC<Props> = ({
                 <div className={styles.card_name}>{product.name}</div>
                 <div className={styles.card_weight}>{product.weight}</div>
             </div>
-
             {productCount === 0 ? (
                 <div className={styles.btn_div}>
                     <button onClick={() => addToBasket(product, 0)}>

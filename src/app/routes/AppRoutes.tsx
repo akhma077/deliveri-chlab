@@ -10,6 +10,7 @@ import {
   CreateProduct,
   Login,
   Register,
+  RestaurantAccEdit,
 } from '../../pages';
 import { MainLayout } from '../layout';
 import { useResetScroll } from '../../shared/hooks/useResetScroll';
@@ -29,6 +30,8 @@ export const AppRoutes = () => {
         <Route path={routePaths.login} element={<Login />}></Route>
         <Route path={routePaths.register} element={<Register />}></Route>
         <Route path={routePaths.createProduct} element={<CreateProduct />}></Route>
+        <Route path={routePaths.restarauntAccaunt} element={<RestaurantAccount />}></Route>
+        <Route path={routePaths.restarauntAccauntEdit} element={<RestaurantAccEdit />}></Route>
       </Route>
     </Routes>
   );

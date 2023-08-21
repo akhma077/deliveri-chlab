@@ -1,0 +1,64 @@
+@import '../../scss/variables';
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    width: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    row-gap: 34px;
+    border-radius: $base-border-radius;
+    padding: 12px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 22px;
+
+    h1 {
+      font-weight: 700;
+    }
+
+    svg {
+      cursor: pointer;
+    }
+
+    svg path {
+      stroke: black;
+      stroke-width: 15%;
+    }
+
+    button {
+      font-size: 14px;
+    }
+  }
+
+  &__editData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 12px;
+    img {
+      width: 140px;
+      height: 140px;
+
+      border-radius: 50%;
+    }
+
+    span {
+      color: $base-color;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid $base-color;
+      padding: 6px;
+      border-radius: $base-border-radius;
+    }
+  }
+}

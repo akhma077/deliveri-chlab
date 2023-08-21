@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as BasketHeaderIcon } from "../../shared/assets/img/BasketHEaderIcon.svg";
 import { ReactComponent as LogoIcon } from "../../shared/assets/img/headerLogo2.svg";
@@ -8,16 +8,19 @@ import { ReactComponent as BurgerMenuIcon } from "../../shared/assets/img/burger
 
 import style from "./index.module.scss";
 import { Button, ButtonVariant } from "../../shared/UI/Button";
+import { useSelector } from "react-redux";
+import { selectBasket, useActions } from "../../shared/config";
+import { Product } from "../../entities";
 import { useQuery } from "react-query";
 import { getUserData } from "../../shared/API";
 import { ModalMobileNavigation } from "../../shared/UI";
-import { useBasketData } from "../../shared";
 import classNames from "classnames";
-import { useActions } from "../../shared/config";
+import { useBasketData } from "../../shared";
 
 export const Header: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { id } = useParams();
 
     const { count } = useBasketData();
     const { setUser } = useActions();
@@ -32,14 +35,6 @@ export const Header: React.FC = () => {
     });
 
     React.useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [isHeaderFixed]);
-
-    React.useEffect(() => {
-        console.log(data);
         setUser(data);
     }, [data]);
 
@@ -49,12 +44,8 @@ export const Header: React.FC = () => {
         );
     };
 
-    const handleCloseModal = () => {
-        setIsOpen(!isOpen);
-    };
-
     const handleScroll = () => {
-        const scrollPosition = window.scrollY;
+        let scrollPosition = window.scrollY;
 
         if (scrollPosition >= 440) {
             setIsHeaderFixed(true);
@@ -62,6 +53,23 @@ export const Header: React.FC = () => {
             setIsHeaderFixed(false);
         }
     };
+
+    const openModal = () => {
+        setIsOpen(true);
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+        document.body.style.overflow = "";
+    };
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <header
@@ -92,8 +100,12 @@ export const Header: React.FC = () => {
                             ""
                         )}
                         {data ? (
-                            <div className={style.header__avatar}>
-                                {/* <span>{data.email[0].toUpperCase()}</span>{' '} */}
+                            <div
+                                className={style.header__avatar}
+                                onClick={() =>
+                                    navigate(`/restarauntAccaunt/${id}`)
+                                }
+                            >
                                 <UserLogoIcon />
                             </div>
                         ) : (
@@ -108,17 +120,20 @@ export const Header: React.FC = () => {
                         )}
                         <div
                             className={style.header__burgerMenu}
-                            onClick={handleCloseModal}
+                            onClick={openModal}
                         >
                             <BurgerMenuIcon />
                         </div>
 
-                        {isOpen && (
-                            <ModalMobileNavigation
-                                isOpen={isOpen}
-                                handleCloseModal={handleCloseModal}
-                            />
-                        )}
+                        <div className={style.header__isOpen}>
+                            {isOpen && (
+                                <ModalMobileNavigation
+                                    isOpen={isOpen}
+                                    handleCloseModal={closeModal}
+                                    handleOpenModal={openModal}
+                                />
+                            )}
+                        </div>
                     </>
                 )}
             </section>

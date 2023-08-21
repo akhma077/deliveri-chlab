@@ -57,6 +57,23 @@ export const createProduct = async (product: any) => {
   return data;
 };
 
+// Удаление продукта
+export const deleteProduct = async (id: any) => {
+  try {
+    const { data } = await axios({
+      method: 'DELETE',
+      url: `${api}/products/${id}`,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // получение юзера
 export const getUserData = async () => {
   const { data } = await axios({

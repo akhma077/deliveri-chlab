@@ -25,17 +25,19 @@ export const RegisterForm = () => {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const [isShowPass, setIsShowPass] = React.useState<ShowPassState>({});
 
-    function handleShowPass(inputId: string) {
-        setIsShowPass((prevInputStates) => ({
-            ...prevInputStates,
-            [inputId]: !prevInputStates[inputId],
-        }));
-    }
-    console.log(errors);
+
+  function handleShowPass(inputId: string) {
+    setIsShowPass((prevInputStates) => ({
+      ...prevInputStates,
+      [inputId]: !prevInputStates[inputId],
+    }));
+  }
+
+   
+
 
     const onSubmit = async (data: any) => {
-        console.log(data);
-
+       
         setIsLoading(true);
         try {
             const { accessToken } = await RegisterAPI(data);

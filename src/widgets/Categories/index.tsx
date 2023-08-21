@@ -40,7 +40,7 @@ export const Categories: React.FC<Props> = ({ data }) => {
       <h2 className={styles.categories__title}>Меню</h2>
 
       <ul className={styles.categories__list}>
-        {data?.slice(1).map((item, idx: number) => (
+        {data?.map((item, idx: number) => (
           <Link key={item.id} to={`scroll-to-${item.id}`} smooth={true}>
             <li
               key={idx}
